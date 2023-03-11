@@ -1,10 +1,10 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <SearchBar></SearchBar>
-    <q-page-container>
-      <router-view />
-    </q-page-container>
-  </q-layout>
+  <div v-if="pageOne">
+    <LandingPage></LandingPage>
+  </div>
+  <div v-if="pageTwo">
+    <ResultPage></ResultPage>
+  </div>
 </template>
 
 

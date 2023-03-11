@@ -1,10 +1,14 @@
 import { defineComponent } from "vue";
-import SearchBar from "components/SearchBar/SearchBar.vue";
+import LandingPage from "pages/LandingPage/LandingPage.vue";
+import ResultPage from "pages/ResultPage/ResultPage.vue";
 
 export default defineComponent({
   name: "MainLayout",
-  components: { SearchBar },
+  components: { LandingPage, ResultPage },
   data() {
-    return {};
+    return {
+      pageOne: false,
+      pageTwo: true
+    };
   }
 });

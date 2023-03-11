@@ -1,15 +1,14 @@
-import { useQuasar } from "quasar";
-import { computed } from "vue";
 import { defineComponent } from "vue";
+import FeatureTimeline from "components/FeatureTimeline/FeatureTimeline.vue";
+import SearchBar from "components/SearchBar/SearchBar.vue";
 
 export default defineComponent({
   name: "LandingPage",
-  setup() {
-    const $q = useQuasar();
-    return {
-      layout: computed(() => {
-        return $q.screen.lt.sm ? "dense" : ($q.screen.lt.md ? "comfortable" : "loose");
-      })
-    };
+  components: {
+    FeatureTimeline,
+    SearchBar
+  },
+  data() {
+    return {};
   }
 });
