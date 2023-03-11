@@ -17,7 +17,8 @@
       </div>
 
       <div class="card-item row-1-item-2">
-        <img src="../../assets/sun.gif" class="img-dim">
+        <img v-if="isDayActivity" src="../../assets/sun.gif" class="img-dim">
+        <img v-else src="../../assets/night.gif" class="img-dim">
       </div>
 
     </div>
@@ -29,20 +30,20 @@
       </div>
 
       <div class="card-item row-2-item-2">
-        <p class="date-text">18 Feb 2023</p>
+        <p class="date-text">{{ dateText }}</p>
       </div>
     </div>
 
     <div class="card-container-row row-container-3">
-      <p class="place-name truncate row-3-item-1">University of Colorado Boulder</p>
+      <p class="place-name truncate row-3-item-1">{{ placeText }}</p>
       <q-tooltip anchor="top middle" self="bottom middle" class="bg-blue text-body2">
-        University of Colorado Boulder
+          {{ placeText }}
       </q-tooltip>
     </div>
 
     <div class="card-container-row row-container-4">
-      <p class="time-text row-4-item-1">Time: 40 MIN</p>
-      <p class="cost-text row-4-item-2">350$</p>
+      <p class="time-text row-4-item-1">Time: {{ timeText }}</p>
+      <p class="cost-text row-4-item-2">{{ costText }}$</p>
     </div>
   </div>
 </template>
