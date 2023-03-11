@@ -3,6 +3,7 @@ import { defineComponent } from "vue";
 /*
 * todo : Dynamic Image case for main image
 *        Format for date
+*        truncate logic
 * */
 
 export default defineComponent({
