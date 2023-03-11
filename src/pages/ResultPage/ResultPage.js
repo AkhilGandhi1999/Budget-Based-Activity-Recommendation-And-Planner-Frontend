@@ -1,6 +1,10 @@
 import { defineComponent } from "vue";
 import ResultCard from "components/ResultCard/ResultCard.vue";
 
+/*
+* todo : Column logic
+*        Tabs panel switch
+* */
 
 export default defineComponent({
   name: "ResultPage",

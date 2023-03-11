@@ -1,5 +1,9 @@
 import { defineComponent } from "vue";
-import { ref } from "vue";
+
+/*
+* todo : Dynamic Image case for main image
+*        Format for date
+* */
 
 export default defineComponent({
   name: "ResultCard",
