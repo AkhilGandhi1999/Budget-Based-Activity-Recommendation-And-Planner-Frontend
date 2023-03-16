@@ -14,7 +14,6 @@
                   :is-day-activity="card.isDayActivity" :cost-text=card.costText
                   :place-text="card.placeText" :time-text="card.timeText"></ResultCard>
     </div>
-
   </div>
 </template>
 
