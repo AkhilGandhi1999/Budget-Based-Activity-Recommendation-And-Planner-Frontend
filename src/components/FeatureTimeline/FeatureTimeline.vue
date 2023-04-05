@@ -1,130 +1,91 @@
 <template>
-  <div class="q-px-lg q-pb-md">
-    <q-timeline :layout="layout" color="secondary">
-      <q-timeline-entry heading>
-        Timeline heading
-        <br>
-        ({{ $q.screen.lt.sm ? "Dense" : ($q.screen.lt.md ? "Comfortable" : "Loose") }} layout)
-      </q-timeline-entry>
-
-      <q-timeline-entry
-        title="Event Title"
-        subtitle="February 22, 1986"
-        side="left"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
+  <section id="timeline">
+    <h1>{{ title_1[0] }}</h1>
+    <p class="leader">{{ title_1[1] }}</p>
+    <div class="demo-card-wrapper">
+      <div class="demo-card demo-card--step1">
+        <div class="head">
+          <div class="number-box">
+            <span>01</span>
+          </div>
+          <h2> {{ heading[0] }} </h2>
         </div>
-      </q-timeline-entry>
+        <div class="body">
+          <p style="text-align: justify">{{ content[0] }}</p>
 
-      <q-timeline-entry
-        title="Event Title"
-        subtitle="February 21, 1986"
-        side="right"
-        icon="delete"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
+
+          <img src="../../assets/Card1_Budget_Based_recommendation.jpg" alt="Graphic">
         </div>
-      </q-timeline-entry>
+      </div>
 
-      <q-timeline-entry heading>November, 2017</q-timeline-entry>
-
-      <q-timeline-entry
-        title="Event Title"
-        subtitle="February 22, 1986"
-        side="left"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
+      <div class="demo-card demo-card--step2">
+        <div class="head">
+          <div class="number-box">
+            <span>02</span>
+          </div>
+          <h2> {{ heading[1] }} </h2>
         </div>
-      </q-timeline-entry>
+        <div class="body">
 
-      <q-timeline-entry
-        title="Event Title"
-        subtitle="February 22, 1986"
-        side="right"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
+          <ul class="lists">
+            <li>Personalized hotel recommendations based on budget and travel dates</li>
+            <li>Suggestions tailored to amenities requirements and desired level of comfort</li>
+            <li>Simplified hotel booking process for users</li>
+          </ul>
+          <img src="../../assets/Card2_Hotel_Recommendation.jpg" alt="Graphic">
         </div>
-      </q-timeline-entry>
+      </div>
 
-      <q-timeline-entry
-        title="Event Title"
-        subtitle="February 22, 1986"
-        side="left"
-        color="orange"
-        icon="done_all"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
+      <div class="demo-card demo-card--step3">
+        <div class="head">
+          <div class="number-box">
+            <span>03</span>
+          </div>
+          <h2> {{ heading[2] }}</h2>
         </div>
-      </q-timeline-entry>
+        <div class="body">
+          <p> {{ content[1] }}</p>
+          <img src="../../assets/Card3_Day_Night.jpg" alt="Graphic">
+        </div>
+      </div>
 
-      <q-timeline-entry
-        title="Event Title"
-        subtitle="February 22, 1986"
-        side="right"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
+      <div class="demo-card demo-card--step4">
+        <div class="head">
+          <div class="number-box">
+            <span>04</span>
+          </div>
+          <h2> {{ heading[3] }}</h2>
         </div>
-      </q-timeline-entry>
+        <div class="body">
+          <p>{{ content[2] }}
+          </p>
+          <img src="../../assets/Card4_Top_Recommendation.jpg" alt="Graphic">
+        </div>
+      </div>
 
-      <q-timeline-entry
-        title="Event Title"
-        subtitle="February 22, 1986"
-        side="left"
-      >
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-          dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
+      <div class="demo-card demo-card--step5">
+        <div class="head">
+          <div class="number-box">
+            <span>05</span>
+          </div>
+          <h2> {{ heading[4] }}</h2>
         </div>
-      </q-timeline-entry>
-    </q-timeline>
-  </div>
+        <div class="body">
+
+          <p style="font-weight: bold">Optimizes your itinerary</p>
+
+          <ul class="list">
+            <li>Checks when attractions are open</li>
+            <li>Recommends how much time to spend</li>
+            <li>Fully customizable</li>
+            <li>Create your own personalized day plan by selecting activities from our top recommendations</li>
+          </ul>
+          <img src="../../assets/Card5_Customize_Your_Plan.png" alt="Graphic">
+        </div>
+      </div>
+
+    </div>
+  </section>
 </template>
 
 <script type="text/javascript" src="./FeatureTimeline.js"></script>

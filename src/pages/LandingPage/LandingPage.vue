@@ -1,5 +1,4 @@
 <template>
-  <SearchBar></SearchBar>
   <FeatureTimeline></FeatureTimeline>
 </template>
 

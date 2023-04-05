@@ -7,8 +7,8 @@ export default defineComponent({
   components: { LandingPage, ResultPage },
   data() {
     return {
-      pageOne: false,
-      pageTwo: true
+      pageOne: true,
+      pageTwo: false
     };
   }
 });
