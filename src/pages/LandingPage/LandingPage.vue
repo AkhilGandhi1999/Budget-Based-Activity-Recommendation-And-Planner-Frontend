@@ -1,4 +1,5 @@
 <template>
+  <TileSelection></TileSelection>
   <FeatureTimeline></FeatureTimeline>
 </template>
 
