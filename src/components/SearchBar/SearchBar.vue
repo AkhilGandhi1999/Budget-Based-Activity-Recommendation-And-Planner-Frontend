@@ -1,56 +1,65 @@
 <template>
-  <div class="q-pa-md row items-start q-gutter-md">
-    <q-card class="my-card">
-      <q-card-section>
-        {{ lorem }}
-      </q-card-section>
-    </q-card>
+  <div class="row">
+    <div class="col">
+      <div class="q-pa-md" style="max-width: 600px">
+        <q-input v-model="name" label="Name"></q-input>
+      </div>
+    </div>
+    <div class="col">
+      <div class="q-pa-md" style="max-width: 600px">
+        <div class="q-gutter-md">
+          <q-badge color="secondary" multi-line>
+            Model: "{{ model }}"
+          </q-badge>
 
-    <q-card
-      class="my-card text-white"
-      style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)"
-    >
-      <q-card-section>
-        <div class="text-h6">Our Changing Planet</div>
-        <div class="text-subtitle2">by John Doe</div>
-      </q-card-section>
-
-      <q-card-section class="q-pt-none">
-        {{ lorem }}
-      </q-card-section>
-    </q-card>
-
-    <q-card dark bordered class="bg-grey-9 my-card">
-      <q-card-section>
-        <div class="text-h6">Our Changing Planet</div>
-        <div class="text-subtitle2">by John Doe</div>
-      </q-card-section>
-
-      <q-separator dark inset />
-
-      <q-card-section>
-        {{ lorem }}
-      </q-card-section>
-    </q-card>
-
-    <q-card flat bordered class="my-card">
-      <q-card-section>
-        <div class="text-h6">Our Changing Planet</div>
-      </q-card-section>
-
-      <q-card-section class="q-pt-none">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </q-card-section>
-
-      <q-separator inset />
-
-      <q-card-section>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </q-card-section>
-    </q-card>
+          <q-select filled v-model="model" :options="options" label="Province" />
+        </div>
+      </div>
+    </div>
   </div>
+  <div class="row">
+    <div class="col">
+
+      <div class="q-pa-md" style="max-width: 600px">
+        <q-input filled v-model="date" mask="date" :rules="['date']" label="Start-Date">
+          <template v-slot:append>
+            <q-icon name="event" class="cursor-pointer">
+              <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                <q-date v-model="date">
+                  <div class="row items-center justify-end">
+                    <q-btn v-close-popup label="Close" color="primary" flat />
+                  </div>
+                </q-date>
+              </q-popup-proxy>
+            </q-icon>
+          </template>
+        </q-input>
+      </div>
+    </div>
+    <div class="col">
+      <div class="q-pa-md" style="max-width: 600px">
+        <q-input filled v-model="date2" mask="date" :rules="['date']" label="End-Date">
+          <template v-slot:append>
+            <q-icon name="event" class="cursor-pointer">
+              <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                <q-date v-model="date2">
+                  <div class="row items-center justify-end">
+                    <q-btn v-close-popup label="Close" color="primary" flat />
+                  </div>
+                </q-date>
+              </q-popup-proxy>
+            </q-icon>
+          </template>
+        </q-input>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-end">
+      <div class="col-7">
+        <q-btn v-on:click="arrowbutton" round color="brown-5" icon="directions"></q-btn>
+      </div>
+  </div>
+
 </template>
 
 <script type="text/javascript" src="./SearchBar.js"></script>
