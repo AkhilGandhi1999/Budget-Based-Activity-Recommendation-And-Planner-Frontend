@@ -1,0 +1,49 @@
+.parallax {
+  //perspective: 100px;
+  //height: 100vh;
+  //overflow-x: hidden;
+  //position: absolute;
+  //margin-left: -10px;
+  //width: 100%;
+  //margin-left: -1500px;
+  //left: 50%;
+
+
+  perspective: 100px;
+  height: 100vh;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  margin-left: -1500px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.parallax::-webkit-scrollbar {
+  display: none;
+}
+.parallax__cover {
+  background: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  top: 100%;
+  left: 15%;
+  height: 100%;
+  transform-style: preserve-3d;
+  z-index: 2;
+}
+
+header {
+  position: absolute;
+  top: -83%;
+  left: 28%;
+  z-index: -1;
+}
+
+.title {
+  font-size: 6rem;
+  color: black;
+}

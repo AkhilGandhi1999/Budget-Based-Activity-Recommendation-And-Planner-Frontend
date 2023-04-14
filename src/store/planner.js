@@ -1,6 +1,7 @@
 const state = {
   budget: null,
-  recCard: []
+  recCard: [],
+  model_parameter:[]
 };
 const mutations = {
   setBudget(state, budget) {
@@ -10,6 +11,7 @@ const mutations = {
     state.recCard.push(recCard);
   }
 };
+
 const actions = {
   updateBudget({ commit }, budget) {
     commit("setBudget", budget);

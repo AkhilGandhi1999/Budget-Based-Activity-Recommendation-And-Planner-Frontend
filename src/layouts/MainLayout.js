@@ -19,8 +19,8 @@ export default defineComponent({
     //  API call setup
 
     const url = 'http://13.56.207.186:5000/categories/get_categories';
-    let pageOne = ref(false);
-    let pageTwo = ref(true);
+    let pageOne = ref(true);
+    let pageTwo = ref(false);
 
      async function resultPage() {
        const data = {

@@ -2,13 +2,15 @@ import { defineComponent, ref } from "vue";
 import FeatureTimeline from "components/FeatureTimeline/FeatureTimeline.vue";
 import SearchBar from "components/SearchBar/SearchBar.vue";
 import TileSelection from "components/TileSelection/TileSelection.vue";
+import ParallaxScroll from "components/ParallaxScroll/ParallaxScroll.vue";
 
 export default defineComponent({
   name: "LandingPage",
   components: {
     FeatureTimeline,
     SearchBar,
-    TileSelection
+    TileSelection,
+    ParallaxScroll
   },
   setup (){
     const attraction_types = ref([{
@@ -129,11 +131,19 @@ export default defineComponent({
       }
 
     ]);
+    const nextParam = ref(true)
   return {
-    attraction_types
+    attraction_types,
+    nextParam
   }
   },
   data() {
     return {};
+  },
+  methods:{
+    handleValueChanged(value){
+      console.log("sdfsdf");
+      this.nextParam = value;
+    }
   }
 });
