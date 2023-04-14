@@ -1,50 +1,72 @@
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, computed  } from "vue";
 
 export default defineComponent({
   name: "TileSelection",
   components: {},
-  setup() {
-    // const attraction_types = ref([
-    //   "private_&_custom_tours",
-    //   "tours_&_sightseeing",
-    //   "recommended_experiences",
-    //   "outdoor_activities",
-    //   "food,_wine_&_nightlife",
-    //   "family_friendly",
-    //   "cultural_&_theme_tours",
-    //   "walking_&_biking_tours",
-    //   "day_trips_&_excursions",
-    //   "water_sports",
-    //   "cruises,_sailing_&_water_tours",
-    //   "transfers_&_ground_transport",
-    //   "luxury_&_special_occasions",
-    //   "sightseeing_tickets_&_passes",
-    //   "multi-day_&_extended_tours",
-    //   "shore_excursions",
-    //   "air,_helicopter_&_balloon_tours",
-    //   "holiday_&_seasonal_tours",
-    //   "shows,_concerts_&_sports",
-    //   "classes_&_workshops"]);
-    const attraction_types = ref([{
-      id: 0,
-      display_name: "Family",
-      actual_name: "family"
-    }]);
+  props: ["attraction_types"],
+  setup(props) {
+
+
+    // const model = ref(2)
+    // const priceModel = ref(4)
 
     const chosenArray = ref([]);
-    const abc = (id) => {
-      console.log(id);
-      chosenArray.value.push(id);
+    const category = ref([]);
+    // eslint-disable-next-line vue/no-setup-props-destructure
+    category.value = props.attraction_types;
+
+
+    const AddList = (id) => {
+      const index = category.value.findIndex(item => item.id === id);
+      //  disable add button
+
+      category.value[index].disabled = true;
+
+      //to add different rating
+      category.value[index].rating = 0;
+      // push the element
+      chosenArray.value.push(category.value[index]);
+      // chosenArray.value.push(addedItem);
+
     };
 
-    const removeList = () => {
-        chosenArray.value.pop();
+    const removeChosen = (index) => {
+      chosenArray.value.splice(index, 1);
     };
+    const removeList = (id) => {
+      const index = chosenArray.value.findIndex(item => item.id === id);
+      chosenArray.value.splice(index, 1);
+      // toggle button
+      const index1 = category.value.findIndex(item => item.id === id);
+      category.value[index1].disabled = false;
+
+    };
+    const updateRating = (id, rating) => {
+      const index = chosenArray.value.findIndex((item) => item.id === id);
+      chosenArray.value[index].rating = rating;
+      console.log(chosenArray.value)
+    };
+
     return {
-      attraction_types,
-      abc,
+      AddList,
       chosenArray,
-      removeList
+      removeList,
+      removeChosen,
+      category,
+      thirdModel: ref(0),
+      updateRating
+
+
+      // model,
+      // priceModel,
+      // priceLabel: computed(() => `$ ${priceModel.value}`),
+      // arrayMarkerLabel: [
+      //   { value: 3, label: '$3' },
+      //   { value: 4, label: '$4' },
+      //   { value: 5, label: '$5' },
+      //   { value: 6, label: '$6' }
+      // ]
+
     };
   }
 });

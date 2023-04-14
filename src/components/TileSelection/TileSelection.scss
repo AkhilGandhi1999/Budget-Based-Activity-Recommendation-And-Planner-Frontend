@@ -1,4 +1,146 @@
-.my-card {
+.category-grid{
+  display: flex;
+}
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  width: 215px;
+  height: 90px;
+  border: 2px solid #4b0082;
+
+}
+.q-card:hover{
+  transform: scale(1.25);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+
+}
+
+.btn-text{
+  font-size: 11px;
+ }
+.category-row-item-1 {
+  display: flex;
+  justify-content: center;
+  flex-basis: calc(80% / 4);
+  padding: 10px;
+
+
+}
+.card-grid{
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  border-right: 3px solid #ccc;
+  //background-image: linear-gradient(to right, #E6E6FA	 65%, 	#8A2BE2)	;
+  border-radius: 30px;
+
+
+}
+// internal card flex box
+
+.q-card-category-column{
+  display: flex;
+  flex-direction: column;
+}
+.q-card-category-row-1{
+  font-size: 12.5px;
+  font-family: Roboto;
+  margin: auto;
+  padding: 15px;
+  height: 10px;
+  color: #191970;
+}
+
+.q-btn-custom {
+  margin: 0 5px;
+  //background-color: #C3B1E1;
+  font-weight: bolder;
+  color: #333;
+  border: 1px solid #C3B1E1;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.q-btn:hover {
+  background-color: #C3B1E1;
+  color: black;
+  border-color: #999;
+}
+
+.q-btn:focus,
+.q-btn:active {
+  outline: none;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.q-btn.disabled,
+.q-btn[disabled] {
+  cursor: default;
+  opacity: 0.5;
+}
+.category-row-item-2{
+  margin: auto;
+}
+.item2 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  width: 270px;
+  height: 100px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  position: relative;
+  color: #012169;
+
+}
+
+.item2 .item2-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item2 .item2-header-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.item2 .q-slider {
+  margin: 10px;
+  -webkit-appearance: none;
   width: 100%;
-  max-width: 350px
+  height: 4px;
+  border-radius: 4px;
+  background-color: #ddd;
+  outline: none;
+  opacity: 0.7;
+  //-webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+.item2 .q-slider:hover {
+  opacity: 1;
+}
+
+.item2 .q-slider .q-slider-track {
+  border-top: none;
+}
+
+
+
+.item2 .q-btn {
+  padding: 1px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.item2 .q-icon {
+  margin-right: 0px;
 }

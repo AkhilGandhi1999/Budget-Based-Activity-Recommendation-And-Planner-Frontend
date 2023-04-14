@@ -1,5 +1,5 @@
 <template>
-  <TileSelection></TileSelection>
+  <TileSelection :attraction_types="attraction_types"></TileSelection>
   <FeatureTimeline></FeatureTimeline>
 </template>
 
