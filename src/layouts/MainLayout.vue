@@ -1,7 +1,15 @@
 <template>
   <div v-if="pageOne">
+    <q-btn @click="resultPage()">Submit</q-btn>
     <LandingPage></LandingPage>
   </div>
+
+  <q-inner-loading label="Please wait we are constructing your plan..."
+                   label-class="text-teal"
+                   label-style="font-size: 1.1em" :showing="visible">
+    <q-spinner-gears size="50px" color="primary" />
+  </q-inner-loading>
+
   <div v-if="pageTwo">
     <ResultPage></ResultPage>
   </div>

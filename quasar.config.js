@@ -7,6 +7,7 @@
 
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js
+const path = require('path')
 
 
 const ESLintPlugin = require('eslint-webpack-plugin')
@@ -19,7 +20,13 @@ module.exports = configure(function (ctx) {
     // https://v2.quasar.dev/quasar-cli-webpack/supporting-ts
     supportTS: false,
 
-
+    css: {
+      loaderOptions: {
+        sass: {
+          includePaths: [path.resolve(__dirname, './node_modules/compass-mixins/lib')]
+        }
+      }
+    },
     //loaders
     module: {
       rules: [
@@ -30,13 +37,19 @@ module.exports = configure(function (ctx) {
           use: [
             'vue-style-loader',
             'css-loader',
-            'sass-loader'
+            'sass-loader',
+            {
+              loader: 'sass-resources-loader',
+              options: {
+                resources: [
+                  '~compass/css3'
+                ]
+              }
+            }
           ]
         }
       ]
     },
-
-
     // https://v2.quasar.dev/quasar-cli-webpack/prefetch-feature
     // preFetch: true,
 

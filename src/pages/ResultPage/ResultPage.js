@@ -1,8 +1,9 @@
-import { defineComponent, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import ResultCard from "components/ResultCard/ResultCard.vue";
 import draggable from "vuedraggable";
 import PlannerCalendar from "components/PlannerCalendar/PlannerCalendar.vue";
-
+import { useStore } from "vuex";
+import ParallaxScroll from "components/ParallaxScroll/ParallaxScroll.vue";
 /*
 * todo : Column logic
 *        Tabs panel switch
@@ -10,7 +11,7 @@ import PlannerCalendar from "components/PlannerCalendar/PlannerCalendar.vue";
 
 export default defineComponent({
   name: "ResultPage",
-  components: { ResultCard, draggable, PlannerCalendar },
+  components: { ResultCard, draggable, PlannerCalendar, ParallaxScroll },
   setup() {
     const cardObjectItems = ref([
       {
@@ -55,6 +56,12 @@ export default defineComponent({
       }
     ]);
 
+    const store = useStore();
+    let globalBudget = ref("");
+    onMounted(() => {
+      globalBudget.value = store.getters["planner/getBudget"];
+    });
+
     const startDrag = (event, card) => {
       event.dataTransfer.dropEffect = "move";
       event.dataTransfer.effectAllowed = "move";
@@ -62,11 +69,11 @@ export default defineComponent({
     };
 
     const onDrop = (event, list) => {
-      const itemID = event.dataTransfer.getData("itemID")
-      const item = cardObjectItems.value.find((item) => item.id == itemID)
-      console.log(list)
-      item.list = list
-    }
+      const itemID = event.dataTransfer.getData("itemID");
+      const item = cardObjectItems.value.find((item) => item.id == itemID);
+      console.log(list);
+      item.list = list;
+    };
 
     const cardObjects = (list) => {
       return cardObjectItems.value.filter((item) => item.list == list);
@@ -75,8 +82,11 @@ export default defineComponent({
       cardObjects,
       onDrop,
       startDrag,
+      globalBudget,
       autoplay: ref(true),
-      slide: ref('style')
+      slide: ref("style"),
+      tab: ref('mails')
+
     };
   }
 });
