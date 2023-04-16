@@ -15,131 +15,130 @@ export default defineComponent({
   setup (){
     const attraction_types = ref([{
       id: 0,
-      display_name: "Private and Custom Tours",
+      display_name: "PRIVATE & CUSTOM TOURS",
       actual_name: "private_&_custom_tours",
       disabled: false
     },
       {
         id: 1,
-        display_name: "Sightseeing Tours",
+        display_name: "SIGHTSEEING TOURS",
         actual_name: "tours_&_sightseeing",
         disabled: false
       },
       {
         id: 2,
-        display_name: "Recommended Experiences",
+        display_name: "RECOMMENDED EXPERIENCES",
         actual_name: "recommended_experiences",
         disabled: false
       },
       {
         id: 3,
-        display_name: "Outdoor Activities",
+        display_name: "OUTDOOR ACTIVITIES",
         actual_name: "outdoor_activities",
         disabled: false
       },
       {
         id: 4,
-        display_name: "Food Wine and Nightlife",
+        display_name: "FOOD, WINE & NIGHTLIFE",
         actual_name: "food,_wine_&_nightlife",
         disabled: false
       },
       {
         id: 5,
-        display_name: "Family Friendly",
+        display_name: "FAMILY FRIENDLY",
         actual_name: "family_friendly",
         disabled: false
       }, {
         id: 6,
-        display_name: "Cultural and Theme Tours",
+        display_name: "CULTURAL & THEME TOURS",
         actual_name: "cultural_&_theme_tours",
         disabled: false
       },
       {
         id: 7,
-        display_name: "Walking and Biking Tours",
+        display_name: "WALKING & BIKING TOURS",
         actual_name: "walking_&_biking_tours",
         disabled: false
       },
       {
         id: 8,
-        display_name: "Day Trips and Excursions",
+        display_name: "DAY TRIPS & EXCURSIONS",
         actual_name: "day_trips_&_excursions",
         disabled: false
       }, {
         id: 9,
-        display_name: "Water Sports",
+        display_name: "WATER SPORTS",
         actual_name: "water_sports",
         disabled: false
       }, {
         id: 10,
-        display_name: "Cruises, Sailing and Water Tours",
+        display_name: "CRUISES, SAILING & WATER TOURS",
         actual_name: "cruises,_sailing_&_water_tours",
         disabled: false
       }, {
         id: 11,
-        display_name: "Transfers and Ground Transport",
+        display_name: "TRANSFERS & GROUND TRANSPORT",
         actual_name: "transfers_&_ground_transport",
         disabled: false
       },
       {
         id: 12,
-        display_name: "Luxury and Special Occasions",
+        display_name: "LUXURY & SPECIAL OCCASIONS",
         actual_name: "luxury_&_special_occasions",
         disabled: false
       },
       {
         id: 13,
-        display_name: "Sightseeing, tickets and passes",
+        display_name: "SIGHTSEEING, TICKETS & PASSES",
         actual_name: "sightseeing_tickets_&_passes",
         disabled: false
       },
       {
         id: 14,
-        display_name: "Multiday and Extended Tours",
+        display_name: "MULTI-DAY & EXTENDED TOURS",
         actual_name: "multi-day_&_extended_tours",
         disabled: false
       },
       {
         id: 15,
-        display_name: "Shore Excursions",
+        display_name: "SHORE EXCURSIONS",
         actual_name: "shore_excursions",
         disabled: false
       },
       {
         id: 16,
-        display_name: "Air, Helicopter and Ballon Tours",
+        display_name: "AIR, HELICOPTER & BALLOON TOURS",
         actual_name: "air,_helicopter_&_balloon_tours",
         disabled: false
       },
       {
         id: 17,
-        display_name: "Holiday and Seasonal Tours",
+        display_name: "HOLIDAY & SEASONAL TOURS",
         actual_name: "holiday_&_seasonal_tours",
         disabled: false
       },
       {
         id: 18,
-        display_name: "Shows, Concerts and Sports",
+        display_name: "SHOWS, CONCERTS & SPORTS",
         actual_name: "shows,_concerts_&_sports",
         disabled: false
       },
       {
         id: 19,
-        display_name: "Classes and Workshops",
+        display_name: "CLASSES & WORKSHOPS",
         actual_name: "classes_&_workshops",
         disabled: false
       }
 
     ]);
     const nextParam = ref(true)
-  return {
-    attraction_types,
-    nextParam
-  }
+    return {
+      step: ref(1),
+      attraction_types,
+      nextParam,
+    }
   },
-  data() {
-    return {};
-  },
+
   methods:{
     handleValueChanged(value){
       console.log("sdfsdf");

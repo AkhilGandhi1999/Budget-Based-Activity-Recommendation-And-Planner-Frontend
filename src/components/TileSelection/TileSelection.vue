@@ -2,15 +2,19 @@
   <div class="category-grid" style="margin: auto">
     <div class="card-grid" :class="chosenArray.length === 5 ? 'disabled' : ''">
       <div v-for="(cat, index) in category" :key="index" class="category-row-item-1">
-        <q-card class="card">
+        <q-card :class="'card-' + index"  class="card">
           <div class="q-card-category-column">
             <div class="q-card-category-row-1 text-weight-bold">
-              {{ cat.display_name }}
+              <p style="text-align: center; padding-top: 10px">
+                {{ cat.display_name }}
+              </p>
             </div>
+            <q-separator dark inset />
+
             <div class="q-card-category-row-2">
               <q-card-actions align="center">
-                <q-btn flat :disable="cat.disabled" class="btn-text q-btn-custom" @click="AddList(cat.id)">Add</q-btn>
-                <q-btn flat :disable="!cat.disabled" class="btn-text q-btn-custom" @click="removeList(cat.id)">Remove
+                <q-btn flat :disable="cat.disabled" class="btn-text q-btn-custom" @click="AddList(cat.id, index)">Add</q-btn>
+                <q-btn flat :disable="!cat.disabled" class="btn-text q-btn-custom" @click="removeList(cat.id, index)">Remove
                 </q-btn>
               </q-card-actions>
             </div>
@@ -19,58 +23,27 @@
       </div>
     </div>
 
+    <q-separator vertical>
 
+    </q-separator>
     <div class="category-row-item-2">
-      <div class="text-weight-bold item2" v-for="(item, index) in chosenArray" :key="index">
-        {{ item.display_name }}
-        <q-btn icon="highlight_off" flat square v-if="chosenArray.length === 5" @click="removeChosen(index)"></q-btn>
-        <div class="q-px-sm q-pb-sm">
+      <p style="font-size: large; font-family: 'Cantarell Thin'">Selected category</p>
+      <transition-group name="fade" tag="div" mode="out-in">
+        <div  class="text-weight-bold item2" v-for="(item, index) in chosenArray" :key="index">
+          <div class="card-css">
+            {{ item.display_name }}
+          </div>
+          <q-btn style="padding-right: 8px;" icon="highlight_off" flat square @click="removeChosen(item.display_name,index)"></q-btn>
           <q-slider
-            class="q-mt-lg"
-            v-model="item.rating"
-            color="#3F00FF"
-            :thumb-color="item.rating === 0 ? 'grey' : 'teal'"
-            snap
-            :min="0"
+            class="q-mt-xl"
+            v-model="priceModel[index]"
+            color="#1560bd"
+            :marker-labels="arrayMarkerLabel"
+            :min="1"
             :max="5"
-            :step="1"
-            marker-labels
-            switch-marker-labels-side
-          >
-            <template v-slot:marker-label-group="{ markerMap }">
-              <div
-                class="row items-center no-wrap"
-                :class="markerMap[item.rating].classes"
-                :style="markerMap[item.rating].style"
-              >
-                <q-icon
-                  v-if="item.rating === 0"
-                  size="xs"
-                  color="#3F00FF"
-                  name="star_outline"
-                />
-
-                <template v-else>
-                  <q-icon
-                    v-for="i in Math.floor(item.rating)"
-                    :key="i"
-                    size="xs"
-                    color="#3F00FF"
-                    name="star_rate"
-                  />
-
-                  <q-icon
-                    v-if="item.rating > Math.floor(item.rating)"
-                    size="xs"
-                    color="#3F00FF"
-                    name="star_half"
-                  />
-                </template>
-              </div>
-            </template>
-          </q-slider>
+          />
         </div>
-      </div>
+      </transition-group>
 
     </div>
   </div>
