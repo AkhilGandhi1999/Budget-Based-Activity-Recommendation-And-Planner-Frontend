@@ -12,7 +12,7 @@ export default defineComponent({
     TileSelection,
     ParallaxScroll
   },
-  setup (){
+  setup() {
     const attraction_types = ref([{
       id: 0,
       display_name: "PRIVATE & CUSTOM TOURS",
@@ -131,18 +131,21 @@ export default defineComponent({
       }
 
     ]);
-    const nextParam = ref(true)
+    const nextParam = ref(true);
     return {
       step: ref(1),
       attraction_types,
-      nextParam,
-    }
+      nextParam
+    };
   },
 
-  methods:{
-    handleValueChanged(value){
-      console.log("sdfsdf");
+  methods: {
+    handleValueChanged(value) {
       this.nextParam = value;
+    },
+    jumpToElement(element_id) {
+      let element = document.getElementById(element_id);
+      element.scrollIntoView({ behavior: "smooth" });
     }
   }
 });
