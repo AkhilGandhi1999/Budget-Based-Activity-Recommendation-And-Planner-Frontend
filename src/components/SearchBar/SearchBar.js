@@ -13,8 +13,24 @@ export default defineComponent({
       date: ref(""),
       date2:ref(""),
       model: ref(""),
+      amount:ref(),
+      range: ref({
+        min: 100,
+        max: 500
+      }),
       options: ref([
-        'Alberta', 'British Columbia', 'Twitter', 'Apple', 'Oracle'
+        {
+        label:'Alberta', value:'alberta'
+      },{
+        label:'British Columbia', value:'british_columbia'
+      },{
+        label:'Manitoba', value:'alberta'
+      },{
+        label:'Nunavut', value:'alberta'
+      },{
+        label:'Ontario', value:'alberta'
+      },
+        // 'British Columbia', 'Alberta'
     ]),
       params:{
       province:'british_columbia',low: 115.0,
@@ -29,7 +45,8 @@ export default defineComponent({
     arrowbutton(){
       this.visible = false;
       this.$emit('visibleChanged', this.visible)
-      console.log("Startdate-"+this.date+ "EndDate-"+this.date2)
+
+      console.log("Startdate-"+this.date+ "EndDate-"+this.date2 + "Amount-" +this.amount+ "Province"+ this.options.value+ "Range_Min-"+this.range.min+" Range_Max-"+this.range.max)
       const inputDate = this.date;
       const parts = inputDate.split('/');
       const year = parts[0];
@@ -50,8 +67,8 @@ export default defineComponent({
       // console.log(formattedstartDate);
       // console.log(formattedendDate);
       // axios.post("http://13.56.207.186:5000/categories/get_categories", {
-      //   province:this.model,low: 115.0,
-      //   high: 205.0,
+      //   province:this.options.value,low: this.range.min,
+      //   high: this.range.max,
       //   cat_rating: {"private_&custom_tours": 4.0, "luxury&special_occasions": 3.0, "sightseeing_tickets&passes": 1.0, "multi-day&extended_tours": 3.0, "walking&_biking_tours": 1.0},
       //   begin_date: formattedstartDate, end_date: formattedendDate
       //
