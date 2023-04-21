@@ -1,4 +1,6 @@
 <template>
+<!--  <GoogleMap></GoogleMap>-->
+<!--  <Weather></Weather>-->
   <div class="parallax" id="home">
     <ParallaxScroll></ParallaxScroll>
     <div class="parallax__cover">
