@@ -3,7 +3,7 @@ import FeatureTimeline from "components/FeatureTimeline/FeatureTimeline.vue";
 import SearchBar from "components/SearchBar/SearchBar.vue";
 import GoogleMap from "components/GoogleMap/GoogleMap.vue";
 import Weather from "components/Weather/WeatherAPI.vue";
-import TileSelection from "components/TileSelection/TileSelection";
+import TileSelection from "components/TileSelection/TileSelection.vue";
 import ParallaxScroll from "components/ParallaxScroll/ParallaxScroll.vue";
 
 export default defineComponent({
