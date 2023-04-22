@@ -64,6 +64,7 @@ export default defineComponent({
 
       this.params.low = this.low;
 
+
       // console.log(formattedstartDate);
       // console.log(formattedendDate);
       // axios.post("http://13.56.207.186:5000/categories/get_categories", {
@@ -73,6 +74,32 @@ export default defineComponent({
       //   begin_date: formattedstartDate, end_date: formattedendDate
       //
       // }).then(response=>console.log(response)).catch(error=>console.log(error))
+
+
+
+      const axios = require("axios");
+
+      const options = {
+        method: 'GET',
+        url: 'https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-reviews',
+        params: {
+          page: '1',
+          domainCode: 'com',
+          asin: 'B08R9V9YZC',
+          sortBy: 'recent',
+          filters: 'reviewerType=avp_only_reviews;filterByStar=five_star'
+        },
+        headers: {
+          'X-RapidAPI-Key': '66c541bacbmsh85cf0b8b88f61d5p120a8fjsn8b4e49b92bef',
+          'X-RapidAPI-Host': 'axesso-axesso-amazon-data-service-v1.p.rapidapi.com'
+        }
+      };
+
+      axios.request(options).then(function (response) {
+        console.log(response.data.reviews[0].text);
+      }).catch(function (error) {
+        console.error(error);
+      });
 
     }
   }
