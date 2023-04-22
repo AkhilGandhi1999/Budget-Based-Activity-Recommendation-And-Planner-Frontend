@@ -2,7 +2,7 @@ name: Frontend CICD
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "rohit-cicd" ]
     
 env:
   EB_PACKAGE_S3_BUCKET_NAME : "cicdbdafrontend"
@@ -86,7 +86,8 @@ jobs:
            npm i -g @quasar/cli &&
            npm install && echo "running npm install quasar" &&
            quasar -v && echo "after npm and bulding quazar " &&
-           quasar build && echo "done with build" 
+           quasar build && echo "done with build"
+           
 
     - name: Configuring my AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
@@ -96,7 +97,7 @@ jobs:
         aws-region           : ${{ env.AWS_REGION_NAME }}        
 
     - name: Copy out Deployment package to S3 bucket
-      run: aws s3 cp /dist/spa s3://${{ env.EB_PACKAGE_S3_BUCKET_NAME }} --recursive
+      run: aws s3 cp BDAP-Frontend/dist/spa s3://${{ env.EB_PACKAGE_S3_BUCKET_NAME }} --recursive
       
     - name: Print message of CI completion
       run: echo "CI Pipeline  is completed successfully"
