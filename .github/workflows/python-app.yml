@@ -87,6 +87,7 @@ jobs:
            npm install && echo "running npm install quasar" &&
            quasar -v && echo "after npm and bulding quazar " &&
            quasar build && echo "done with build"
+           && ls && echo "printing all dirctories" 
            
 
     - name: Configuring my AWS Credentials
