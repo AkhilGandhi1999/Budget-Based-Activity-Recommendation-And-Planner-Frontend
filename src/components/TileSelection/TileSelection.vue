@@ -13,7 +13,7 @@
 
             <div class="q-card-category-row-2">
               <q-card-actions align="center">
-                <q-btn flat :disable="cat.disabled" class="btn-text q-btn-custom" @click="AddList(cat.id, index)">Add</q-btn>
+                <q-btn flat :disable="cat.disabled" class="btn-text q-btn-custom" @click="AddList(cat.id, index)">Select</q-btn>
                 <q-btn flat :disable="!cat.disabled" class="btn-text q-btn-custom" @click="removeList(cat.id, index)">Remove
                 </q-btn>
               </q-card-actions>
@@ -27,14 +27,15 @@
 
     </q-separator>
     <div class="category-row-item-2">
-      <p style="font-size: large; font-family: 'Cantarell Thin'">Selected category</p>
+      <p  style="font-size: large; text-align: center; font-weight: bold">SELECTED CATEGORY</p>
       <transition-group name="fade" tag="div" mode="out-in">
         <div  class="text-weight-bold item2" v-for="(item, index) in chosenArray" :key="index">
-          <div class="card-css">
+          <div :class="!sliderStatus ? 'card-css' : ''">
             {{ item.display_name }}
           </div>
           <q-btn style="padding-right: 8px;" icon="highlight_off" flat square @click="removeChosen(item.display_name,index)"></q-btn>
           <q-slider
+            v-if="sliderStatus"
             class="q-mt-xl"
             v-model="priceModel[index]"
             color="#1560bd"

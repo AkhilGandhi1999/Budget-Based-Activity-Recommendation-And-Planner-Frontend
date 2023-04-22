@@ -1,8 +1,7 @@
 <template>
 <!--  first page-->
   <div v-if="pageOne">
-<!--    <q-btn @click="resultPage()">Submit</q-btn>-->
-    <LandingPage></LandingPage>
+    <LandingPage @secondPage="callModel"></LandingPage>
   </div>
 
 <!--  loader/spinner logic -->

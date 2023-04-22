@@ -1,6 +1,6 @@
 <template>
-<!--  <GoogleMap></GoogleMap>-->
-<!--  <Weather></Weather>-->
+  <!--  <GoogleMap></GoogleMap>-->
+  <!--  <Weather></Weather>-->
   <div class="parallax" id="home">
     <ParallaxScroll></ParallaxScroll>
     <div class="parallax__cover">
@@ -18,6 +18,7 @@
       </div>
       <div class="q-pa-md stepper-progress" id="search">
         <q-stepper
+          class="stepper-progress-1"
           v-model="step"
           ref="stepper"
           color="primary"
@@ -35,10 +36,9 @@
             title="Select your category"
             icon="category"
             :done="step > 2">
-            <p style="font-size: large; font-family: 'Cantarell Thin'; text-align: center">Select your category</p>
             <transition class="fade">
               <TileSelection style="padding:20px; " v-if="nextParam"
-                             :attraction_types="attraction_types"></TileSelection>
+                             :attraction_types="attraction_types" :slider-status="true"></TileSelection>
             </transition>
           </q-step>
           <q-step
@@ -46,16 +46,30 @@
             title="Select your hotel pref"
             icon="hotel"
             :done="step > 3">
-            <p style="font-size: large; font-family: 'Cantarell Thin'; text-align: center">Select your category</p>
             <transition class="fade">
               <TileSelection class="" style="padding:20px; " v-if="nextParam"
-                             :attraction_types="attraction_types"></TileSelection>
+                             :attraction_types="hotel_types" :slider-status="false"></TileSelection>
             </transition>
+          </q-step>
+          <q-step
+            :name="4"
+            title="Done"
+            icon="verified"
+            :done="step > 4">
+            <transition-group class="fade" >
+              <div style="padding: 100px">
+                <p style="text-align: center; font-size: 2em;">You are all set. Click the button to get your recommendations</p>
+                <q-btn  style="font-size: 1.2em; margin-left: 700px" @click="triggerFunction()" color="primary" label="Click Here" />
+              </div>
+
+            </transition-group>
           </q-step>
           <template v-slot:navigation>
             <q-stepper-navigation>
-              <q-btn @click="$refs.stepper.next()" color="primary" :label="step === 4 ? 'Finish' : 'Continue'" />
-              <q-btn v-if="step > 1" flat color="primary" @click="$refs.stepper.previous()" label="Back"
+              <q-btn style="margin-left: 30px; margin-bottom: 5px; font-size: 1.12em;" @click="$refs.stepper.next();"
+                     color="primary" v-if="step!==4" :label="step === 3 ? 'Finish' : 'Continue'" />
+              <q-btn style="font-size: 1.12em;" v-if="step > 1 && step !== 4" flat color="primary" @click="$refs.stepper.previous()"
+                     label="Back"
                      class="q-ml-sm" />
             </q-stepper-navigation>
           </template>
