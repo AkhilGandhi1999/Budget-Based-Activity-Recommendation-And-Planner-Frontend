@@ -22,10 +22,7 @@
         </q-card>
       </div>
     </div>
-
-    <q-separator vertical>
-
-    </q-separator>
+    <q-separator vertical></q-separator>
     <div class="category-row-item-2">
       <p  style="font-size: large; text-align: center; font-weight: bold">SELECTED CATEGORY</p>
       <transition-group name="fade" tag="div" mode="out-in">
