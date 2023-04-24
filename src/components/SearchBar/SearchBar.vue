@@ -1,5 +1,5 @@
-<template >
- <div class="search-style">
+<template>
+  <div class="search-style">
     <div class="row">
       <div class="col">
         <div class="q-pa-md" style="max-width: 600px">
@@ -9,7 +9,7 @@
       <div class="col">
         <div class="q-pa-md" style="max-width: 600px">
           <div class="q-gutter-md">
-            <q-select outlined v-model="options.value" :options="options" label="Province" emit-value map-options/>
+            <q-select outlined v-model="options.value" :options="options" label="Province" emit-value map-options />
           </div>
         </div>
       </div>
@@ -51,27 +51,27 @@
       </div>
     </div>
 
-     <div class="slider-style">
-       <q-list dense>
-         <q-item>
-           <q-item-section avatar >
-             <q-icon color="" name="attach_money" ></q-icon>
-           </q-item-section>
-           <q-item-section>
-             <q-range
-               v-model="range"
-               :min="0"
-               :max="1000"
-               label-always
-               :left-label-value = "priceLabelLeft"
-               :right-label-value = "priceLabelRight"
-               drag-range
-             ></q-range>
-           </q-item-section>
-         </q-item>
+    <div class="slider-style">
+      <q-list dense>
+        <q-item>
+          <q-item-section avatar>
+            <q-icon color="" name="attach_money"></q-icon>
+          </q-item-section>
+          <q-item-section>
+            <q-range
+              v-model="range"
+              :min="0"
+              :max="1000"
+              label-always
+              :left-label-value="priceLabelLeft"
+              :right-label-value="priceLabelRight"
+              drag-range
+            ></q-range>
+          </q-item-section>
+        </q-item>
 
-       </q-list>
-     </div>
+      </q-list>
+    </div>
 
 
   </div>

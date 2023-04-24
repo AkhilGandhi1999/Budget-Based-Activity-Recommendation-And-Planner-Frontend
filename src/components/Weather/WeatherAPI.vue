@@ -1,5 +1,3 @@
-
-
 <template>
   <div class="container">
     <div class="card">
@@ -18,30 +16,6 @@
       </div>
     </div>
   </div>
-
-
-<!--  <div class="card" :class="weatherClass">-->
-<!--    <div class="card-header">-->
-<!--      <h2>{{ weatherData.location.name }}</h2>-->
-<!--      <p>{{ weatherData.location.region }}, {{ weatherData.location.country }}</p>-->
-<!--      <p>{{ currentDate }}</p>-->
-<!--    </div>-->
-<!--    <div class="card-body">-->
-<!--      <div class="weather-info">-->
-<!--        <div class="weather-icon">-->
-<!--          <font-awesome-icon :icon="weatherIcon" />-->
-<!--        </div>-->
-<!--        <div class="weather-text">-->
-<!--          <p class="weather-condition">{{ weatherData.currentConditions.conditions }}</p>-->
-<!--          <p class="weather-temp">{{ weatherData.currentConditions.temp }}&deg;C</p>-->
-<!--          <p class="weather-feels-like">-->
-<!--            Feels like {{ weatherData.currentConditions.feelsLike }}&deg;C-->
-<!--          </p>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-
 </template>
 
 

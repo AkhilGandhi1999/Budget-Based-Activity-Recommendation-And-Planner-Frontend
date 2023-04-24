@@ -19,8 +19,8 @@ export default defineComponent({
     //  API call setup
 
     const url = 'http://54.219.163.251:5000/categories/get_categories';
-    let pageOne = ref(true);
-    let pageTwo = ref(false);
+    let pageOne = ref(false);
+    let pageTwo = ref(true);
 
      async function callModel(pageSwitch) {
        const data1 = {
