@@ -98,6 +98,10 @@
     <div>
       <PlannerCalendar></PlannerCalendar>
     </div>
+  <div>
+<!--      <ToggleButton></ToggleButton>-->
+    </div>
+
 </template>
 
 <script type="text/javascript" src="./ResultPage.js"></script>

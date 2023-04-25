@@ -2,6 +2,8 @@ import { defineComponent, ref } from "vue";
 import LandingPage from "pages/LandingPage/LandingPage.vue";
 import ResultPage from "pages/ResultPage/ResultPage.vue";
 import axios from 'axios';
+
+
 import { useStore } from "vuex";
 
 
@@ -19,8 +21,8 @@ export default defineComponent({
     //  API call setup
 
     const url = 'http://13.56.207.186:5000/categories/get_categories';
-    let pageOne = ref(true);
-    let pageTwo = ref(false);
+    let pageOne = ref(false);
+    let pageTwo = ref(true);
 
      async function resultPage() {
        const data = {

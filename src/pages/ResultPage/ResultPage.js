@@ -4,6 +4,7 @@ import draggable from "vuedraggable";
 import PlannerCalendar from "components/PlannerCalendar/PlannerCalendar.vue";
 import { useStore } from "vuex";
 import ParallaxScroll from "components/ParallaxScroll/ParallaxScroll.vue";
+
 /*
 * todo : Column logic
 *        Tabs panel switch
@@ -11,7 +12,7 @@ import ParallaxScroll from "components/ParallaxScroll/ParallaxScroll.vue";
 
 export default defineComponent({
   name: "ResultPage",
-  components: { ResultCard, draggable, PlannerCalendar, ParallaxScroll },
+  components: {ResultCard, draggable, PlannerCalendar, ParallaxScroll },
   setup() {
     const cardObjectItems = ref([
       {
