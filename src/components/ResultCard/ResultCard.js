@@ -12,22 +12,20 @@ export default defineComponent({
   components: { WeatherCard },
   props: [
     "ratingModel",
+    "imageSrc",
     "isDayActivity",
     "dateText",
     "placeText",
     "timeText",
-    "costText"],
-  mounted() {
-    console.log(this.ratingModel);
-    console.log(this.isDayActivity);
-    console.log(this.dateText);
-    console.log(this.placeText);
-    console.log(this.timeText);
-    console.log(this.costText);
-  },
+    "costText",
+    "lat",
+    "long",
+  ],
   setup() {
     return {
-      fixed: ref(false)
+      fixed: ref(false),
+      calendar: ref(false),
+      time: ref('10:56'),
     };
   }
 });
