@@ -2,8 +2,6 @@ import { defineComponent, ref } from "vue";
 import LandingPage from "pages/LandingPage/LandingPage.vue";
 import ResultPage from "pages/ResultPage/ResultPage.vue";
 import axios from 'axios';
-
-
 import { useStore } from "vuex";
 
 
@@ -20,12 +18,12 @@ export default defineComponent({
 
     //  API call setup
 
-    const url = 'http://13.56.207.186:5000/categories/get_categories';
+    const url = 'http://54.219.163.251:5000/categories/get_categories';
     let pageOne = ref(false);
     let pageTwo = ref(true);
 
-     async function resultPage() {
-       const data = {
+     async function callModel(pageSwitch) {
+       const data1 = {
          "province": "british_columbia",
          "low": 115.0,
          "high": 205.0,
@@ -39,16 +37,19 @@ export default defineComponent({
          "begin_date": "2023-04-05",
          "end_date": "2023-04-06"
        };
-
+       console.log(typeof data1);
+       const data = store.getters["planner/getModelParam"];
+       const data2 = JSON.parse(data[0]);
+       console.log(typeof data2);
        visible.value = true
        showSimulatedReturnData.value = false
 
        try {
-         const response = await axios.post(url, data);
+         const response = await axios.post(url, data2);
          console.log("is it printing")
          console.log(response.data);
-         pageOne.value = false;
-         pageTwo.value = true;
+         pageOne.value = !pageSwitch;
+         pageTwo.value = pageSwitch
          visible.value = false
          await store.dispatch("planner/updateBudget", data.high);
          await store.dispatch("planner/updateRecCard", response.data);
@@ -60,7 +61,7 @@ export default defineComponent({
     return {
       visible,
       showSimulatedReturnData,
-      resultPage,
+      callModel,
       pageTwo,
       pageOne
     };

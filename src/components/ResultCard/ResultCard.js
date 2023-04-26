@@ -1,4 +1,5 @@
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import WeatherCard from "components/Weather/WeatherAPI.vue";
 
 /*
 * todo : Dynamic Image case for main image
@@ -8,6 +9,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "ResultCard",
+  components: { WeatherCard },
   props: [
     "ratingModel",
     "isDayActivity",
@@ -15,8 +17,18 @@ export default defineComponent({
     "placeText",
     "timeText",
     "costText"],
+  mounted() {
+    console.log(this.ratingModel);
+    console.log(this.isDayActivity);
+    console.log(this.dateText);
+    console.log(this.placeText);
+    console.log(this.timeText);
+    console.log(this.costText);
+  },
   setup() {
-    return {};
+    return {
+      fixed: ref(false)
+    };
   }
 });
 

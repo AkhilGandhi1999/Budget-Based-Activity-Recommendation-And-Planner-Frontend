@@ -77,6 +77,7 @@ export default defineComponent({
     };
 
     const cardObjects = (list) => {
+      console.log(list)
       return cardObjectItems.value.filter((item) => item.list == list);
     };
     return {
@@ -85,7 +86,7 @@ export default defineComponent({
       startDrag,
       globalBudget,
       autoplay: ref(true),
-      slide: ref("style"),
+      slide: ref(1),
       tab: ref('mails')
 
     };

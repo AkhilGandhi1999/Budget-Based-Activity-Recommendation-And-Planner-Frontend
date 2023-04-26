@@ -19,7 +19,7 @@
 }
 
 @mixin mq-lg {
-  @media (min-width: 1000px) {
+  @media (min-width: 1400px) {
     @content;
   }
 }
@@ -104,9 +104,11 @@ body {
 }
 
 #timeline {
-  padding: 100px 0;
+  padding: 30px 0;
   background: $background;
   width: 80%;
+  border-radius: 30px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
   margin: auto;
   h1 {
     text-align: center;
@@ -156,6 +158,7 @@ body {
       }
     }
   }
+
   .demo-card {
     position: relative;
     display: block;
@@ -203,6 +206,11 @@ body {
       }
       &:nth-child(2) {
         margin-top: $stagger;
+      }
+    }
+    @media (min-width: 1200px) and (max-width: 1400px){
+      .demo-card{
+        width: 417px;
       }
     }
     .head {

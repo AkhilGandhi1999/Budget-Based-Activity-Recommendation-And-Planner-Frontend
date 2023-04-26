@@ -1,9 +1,9 @@
-.container-grid{
+.container-grid {
   display: flex;
   flex-direction: column;
 }
 
-.container-row{
+.container-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -11,4 +11,18 @@
 
 .drop-zone {
   height: 310px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  text-align: center;
+  background-color:#58b4a9;
+  /* set the z-index to be higher than other elements to make sure it stays on top */
+}
+
+.content {
+  margin-top: 160px; /* set the margin-top to be the same as the height of the header */
 }

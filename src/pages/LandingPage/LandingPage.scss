@@ -11,25 +11,25 @@
   display: none;
 }
 .parallax__cover {
-  background: #003329;
+  background: linear-gradient(to bottom, #003329 15%, white  15%,  #93dfd5 85%);
   position: relative;
   display: flex;
   flex-direction: column;
   top: 99%;
-  height: 420%;
+  height: 472vh;
   transform-style: preserve-3d;
   z-index: 2;
 }
 
 header {
   position: absolute;
-  top: -600px;
-  left: 22%;
+  top: -65vh;
+  left: calc(100vh - 50vh);
   z-index: -1;
 }
 
 .title {
-  font-size: 6rem;
+  font-size: 5rem;
   color: white;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
 }
@@ -38,9 +38,13 @@ header {
   position: absolute;
   z-index: -1;
   top:150px;
-  left: 460px;
+  left: 400px;
   font-size: 0.2em;
 }
+
+
+
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity 3.5s ease;
 }
@@ -54,7 +58,7 @@ header {
   font-size: 4em;
   color: #359381;
   pointer-events: none;
-  margin-right: 720px;
+  margin-right: 610px;
   text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 
 }
@@ -82,10 +86,10 @@ header {
 
 .header {
   position: fixed;
-  top: -950px;
+  top: -100vh;
   left: 100px;
   width: 100%;
-  padding: 30px 100px;
+  padding: 20px 100px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -94,5 +98,43 @@ header {
 
 .stepper-progress{
   margin: 350px 50px 400px 50px;
+}
+
+.stepper-progress-1{
+  border-radius: 30px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+  header {
+    top: -60vh;
+    left: calc(100vh - 50vh);
+  }
+  .title{
+    font-size: 4.5em;
+  }
+  .btn-title{
+    left: 320px;
+    top: 110px;
+  }
+
+  .logo{
+    font-size: 2.5em;
+    margin-right: 430px;
+  }
+
+  .header{
+    top: -105vh;
+    padding: 20px 10px;
+  }
+
+  .navigation a {
+    font-size: 1.1em;
+  }
+
+  .parallax__cover{
+    background: linear-gradient(to bottom, #003329 15%, white  15%,  #93dfd5 85%);
+    height: 730vh;
+  }
 }
 
