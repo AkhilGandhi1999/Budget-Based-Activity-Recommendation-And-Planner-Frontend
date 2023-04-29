@@ -67,27 +67,16 @@ export default defineComponent({
       this.params.high = this.range.max;
       this.params.begin_date = formattedStartDate;
       this.params.end_date = formattedEndDate;
-      console.log(this.params);
 
       // Store the values in Vuex.
+      this.store.dispatch("planner/updateFormattedDate", formattedEndDate);
       this.store.dispatch("planner/updateBudget", this.params.high);
       this.store.dispatch("planner/updateModelInit", this.params);
 
-      let demo = this.store.getters["planner/getBudget"];
-      console.log(demo);
-      let demo1 = this.store.getters["planner/getModelInit"];
-      console.log(demo1);
+      let hotels_init = {};
+      hotels_init.province = this.params.province;
 
-      // console.log(formattedstartDate);
-      // console.log(formattedendDate);
-      // axios.post("http://13.56.207.186:5000/categories/get_categories", {
-      //   province:this.options.value,low: this.range.min,
-      //   high: this.range.max,
-      //   cat_rating: {"private_&custom_tours": 4.0, "luxury&special_occasions": 3.0, "sightseeing_tickets&passes": 1.0, "multi-day&extended_tours": 3.0, "walking&_biking_tours": 1.0},
-      //   begin_date: formattedstartDate, end_date: formattedendDate
-      //
-      // }).then(response=>console.log(response)).catch(error=>console.log(error))
-
+      this.store.dispatch("planner/updateHotelInit", hotels_init);
     }
   }
 });
