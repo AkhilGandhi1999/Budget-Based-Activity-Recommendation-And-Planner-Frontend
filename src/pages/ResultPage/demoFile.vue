@@ -60,5 +60,21 @@ export default {
 </script>
 
 <style scoped>
-
+/*const startDrag = (event, card) => {*/
+/*                                 //   event.dataTransfer.dropEffect = "move";*/
+/*                                 //   event.dataTransfer.effectAllowed = "move";*/
+/*                                 //   event.dataTransfer.setData("itemID", card.id);*/
+/*                                 // };*/
+/*//*/
+/*// const onDrop = (event, list) => {*/
+/*                                 //   const itemID = event.dataTransfer.getData("itemID");*/
+/*                                 //   const item = cardObjectItems.value.find((item) => item.id == itemID);*/
+/*                                 //   console.log(list);*/
+/*                                 //   item.list = list;*/
+/*                                 // };*/
+/*//*/
+/*// const cardObjects = (list) => {*/
+/*                               //   console.log(list)*/
+/*                               //   return cardObjectItems.value.filter((item) => item.list == list);*/
+/*                               // };*/
 </style>

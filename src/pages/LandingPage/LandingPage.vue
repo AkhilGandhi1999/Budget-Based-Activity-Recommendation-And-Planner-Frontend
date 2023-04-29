@@ -33,7 +33,7 @@
           </q-step>
           <q-step
             :name="2"
-            title="Select your category"
+            title="Select five category"
             icon="category"
             :done="step > 2">
             <transition class="fade">
@@ -43,7 +43,7 @@
           </q-step>
           <q-step
             :name="3"
-            title="Select your hotel pref"
+            title="Select five hotel preferences"
             icon="hotel"
             :done="step > 3">
             <transition class="fade">

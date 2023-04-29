@@ -99,24 +99,29 @@ export default defineComponent({
       let flag = this.store.getters["planner/getModelParam"];
       if (flag.length > 0) {
         if (this.chosenArray.length === 5) {
-          const hotel_rating = {
-            [this.chosenArray[0].actual_name]: Number(this.priceModel[0])
-          };
-          console.log(hotel_rating);
-          this.store.dispatch("planner/updateHotelInit", hotel_rating);
-          let demo1 = this.store.getters["planner/getHotelInit"];
+          const hotel_rating = [
+            this.chosenArray[0].actual_name,
+            this.chosenArray[1].actual_name,
+            this.chosenArray[2].actual_name,
+            this.chosenArray[3].actual_name,
+            this.chosenArray[4].actual_name,
+          ];
+          this.store.dispatch("planner/updateHotelParam", hotel_rating);
+          let demo1 = this.store.getters["planner/getHotelParam"];
           console.log(demo1);
         }
       } else {
         if (this.chosenArray.length === 5) {
           const cat_rating = {
-            [this.chosenArray[0].actual_name]: Number(this.priceModel[0]),
+            [this.chosenArray[0].actual_name]: this.priceModel[0],
             [this.chosenArray[1].actual_name]: this.priceModel[1],
             [this.chosenArray[2].actual_name]: this.priceModel[2],
             [this.chosenArray[3].actual_name]: this.priceModel[3],
             [this.chosenArray[4].actual_name]: this.priceModel[4]
           };
           this.store.dispatch("planner/updateModelParam", cat_rating);
+          let demo1 = this.store.getters["planner/getModelParam"];
+          console.log(demo1);
         }
       }
     }

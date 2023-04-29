@@ -33,25 +33,38 @@
       </div>
 
       <div class="card-item row-2-item-2">
-        <p class="date-text">{{ "2023-02-04" }}</p>
+        <p class="date-text">{{ dateText }}</p>
       </div>
     </div>
 
     <div class="card-container-row row-container-3">
-      <p class="place-name truncate row-3-item-1" style="padding: 10px">{{ placeText }}</p>
+      <p class="place-name truncate row-3-item-1" style="padding: 10px; font-size: 1em; ">{{ placeText }}</p>
       <q-tooltip anchor="top middle" self="bottom middle" class="bg-blue text-body2">
         {{ placeText }}
       </q-tooltip>
     </div>
 
     <div class="card-container-row row-container-4">
-      <p class="time-text row-4-item-1" style="padding: 0px 10px">{{ timeText }}</p>
-      <p class="cost-text row-4-item-2">{{ costText }}$</p>
+      <p class="time-text truncate row-4-item-1" style="padding: 0px 10px; font-size: 0.9em">{{ timeText }}</p>
+      <q-tooltip anchor="top middle" self="bottom middle" class="bg-blue text-body2">
+        {{ timeText }}
+      </q-tooltip>
+      <p class="cost-text row-4-item-2" style="font-size: 0.9em">{{ costText }}$</p>
     </div>
 
-    <div class="card-container-row row-container-5" >
+
+    <div v-if="enableLoc" class="card-container-row row-container-5" >
       <q-btn class="round-button ripple"  @click="fixed = true" rounded  label="Peak At Weather" />
-      <q-btn class="round-button ripple"  @click="calendar = true" rounded color="primary" label="Add to Calendar" />
+      <q-btn class="round-button ripple"  style="background-color: #953553" rounded    label="Get Location" />
+      <q-btn class="round-button ripple"  @click="calendar = true" rounded  color="primary" label="Add to Calendar" />
+    </div>
+
+    <div v-if="disableLoc" class="card-container-row row-container-5" >
+      <q-btn class="round-button ripple"  rounded color="red" label="Remove Location" />
+    </div>
+
+    <div v-if="weatherLoc" class="card-container-row row-container-5" >
+      <q-btn class="round-button ripple"  @click="fixed = true" rounded  label="Peak At Weather" />
     </div>
   </div>
 
@@ -65,12 +78,12 @@
 
   <q-dialog v-model="calendar" transition-show="fade" transition-hide="rotate">
     <div class="cal-container">
-      <p>Date "2023-05-05"</p>
-      <q-input  outlined rounded v-model="time" mask="time" label="Start Time" :rules="['time']">
+      <p>DATE : {{ dateText }}</p>
+      <q-input  outlined rounded v-model="start_time" mask="time" label="Start Time" :rules="['time']">
         <template v-slot:append>
           <q-icon name="access_time" class="cursor-pointer">
             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-              <q-time v-model="time" landscape>
+              <q-time v-model="start_time" landscape>
                 <div class="row items-center justify-end">
                   <q-btn v-close-popup label="Close" color="primary" flat />
                 </div>
@@ -80,11 +93,11 @@
         </template>
       </q-input>
 
-      <q-input  outlined rounded v-model="time" mask="time" label="End Time" :rules="['time']">
+      <q-input  outlined rounded v-model="end_time" mask="time" label="End Time" :rules="['time']">
         <template v-slot:append>
           <q-icon name="access_time" class="cursor-pointer">
             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-              <q-time v-model="time" landscape>
+              <q-time v-model="end_time" landscape>
                 <div class="row items-center justify-end">
                   <q-btn v-close-popup label="Close" color="primary" flat />
                 </div>
@@ -93,7 +106,7 @@
           </q-icon>
         </template>
       </q-input>
-      <q-btn class="weather-ok" label="Add to Calendar" color="primary" v-close-popup />
+      <q-btn @click="addEventInCal()" class="weather-ok" label="Add to Calendar" color="primary" v-close-popup />
     </div>
   </q-dialog>
 </template>

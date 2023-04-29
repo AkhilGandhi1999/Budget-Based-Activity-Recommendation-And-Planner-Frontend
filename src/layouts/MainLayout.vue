@@ -13,7 +13,7 @@
 
 <!--  second page-->
   <div v-if="pageTwo">
-    <ResultPage></ResultPage>
+    <ResultPage @backFirstPage="togglePage"></ResultPage>
   </div>
 </template>
 
