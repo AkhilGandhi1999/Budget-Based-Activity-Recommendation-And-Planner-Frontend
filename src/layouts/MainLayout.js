@@ -30,15 +30,19 @@ export default defineComponent({
 
       try {
         const requests = [
-          axios.post(url[0], Cat)
-          // axios.post(url[1], Hotel)
+          await axios.post(url[0], Cat),
+          // await axios.post(url[1], Hotel)
         ];
         const response = await Promise.all(requests);
         console.log(response[0].data);
         pageOne.value = !pageSwitch;
         pageTwo.value = pageSwitch;
         visible.value = false;
-        // await store.dispatch("planner/updateRecCard", response.data);
+
+        // update the Vue store
+        store.dispatch("planner/updateCatCard", response[0].data.categories)
+        store.dispatch("planner/updateRecCard", response[0].data.recommandations);
+
       } catch (error) {
         console.error(error);
       }
@@ -54,6 +58,7 @@ export default defineComponent({
       callModel,
       pageTwo,
       pageOne,
+      store,
       togglePage
     };
   }

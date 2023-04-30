@@ -2,15 +2,16 @@ import "../store/constData.js";
 import * as constData from "src/store/constData";
 
 const state = {
-  budget: constData.budget,
+  budget: 1000,
   recCard: constData.recCard,
   catCard: constData.catCard,
   hotelCard: constData.hotelCard,
+  distCard: constData.recCard,
   model_parameter: [],
   model_init_param: {},
   hotel_parameter: [],
   hotel_init_param: {},
-  formattedStartDate: "2023-04-27"
+  formattedStartDate: "",
 };
 const mutations = {
   setRemoveFromBudget(state, budget) {
@@ -22,7 +23,10 @@ const mutations = {
     state.budget.toFixed(2);
   },
   setRecCard(state, recCard) {
-    state.recCard.push(recCard);
+    state.recCard = recCard;
+  },
+  setCatCard(state, catCard) {
+    state.catCard = catCard;
   },
   setModelInit(state, model_init_param) {
     state.model_init_param = model_init_param;
@@ -52,12 +56,83 @@ const mutations = {
     state.formattedStartDate = "";
   },
   setAddFromBudget(state, budget) {
-    console.log(budget);
     state.budget += budget;
   },
-  setFormattedDate(state, date){
+  setFormattedDate(state, date) {
     state.formattedStartDate = date;
-  }
+  },
+  setToggleCal(state, title) {
+    // Loop through each key in the cat object
+    for (const key in state.catCard) {
+      // Check if the key is a valid property of the object
+      if (state.catCard.hasOwnProperty(key)) {
+        // Access the array of objects for the current key
+        const catArray = state.catCard[key];
+        // Loop through each object in the array
+        catArray.forEach((obj) => {
+          // Check if the object's title matches the titleToMatch variable
+          if (obj.name === title) {
+            // Update the toggle value to the new value
+            obj.calendarToggle = !obj.calendarToggle;
+          }
+        });
+      }
+    }
+  },
+  setToggleLoc(state, title) {
+    for (const key in state.catCard) {
+      // Check if the key is a valid property of the object
+      if (state.catCard.hasOwnProperty(key)) {
+        // Access the array of objects for the current key
+        const catArray = state.catCard[key];
+        // Loop through each object in the array
+        catArray.forEach((obj) => {
+          // Check if the object's title matches the titleToMatch variable
+          if (obj.name === title) {
+            // Update the toggle value to the new value
+            obj.locationToggle = !obj.locationToggle;
+          }
+        });
+      }
+    }
+  },
+  setDistCard(state) {  // need to update when values coming from First page. Update it same as rec Card.
+    for (const key in state.distCard) {
+      // Check if the key is a valid property of the object
+      if (state.distCard.hasOwnProperty(key)) {
+        // Set the array value for the current key to an empty array
+        state.distCard[key] = [];
+      }
+    }
+  },
+  setAddLocation(state, title) {
+    for (const key in state.catCard) {
+      if (state.catCard.hasOwnProperty(key)) {
+        const distArray = state.catCard[key];
+        distArray.forEach((obj) => {
+          // Check if the object's title matches the titleToMatch variable
+          if (obj.name === title) {
+            // Update the toggle value to the new value
+            if(state.distCard[key].length < 4){
+              state.distCard[key].push(obj);
+              obj.locationToggle = !obj.locationToggle;
+            }
+            else {
+              alert("You cannot add more items!!");
+            }
+          }
+        });
+      }
+    }
+  },
+  setRemoveLocation(state, title) {
+    for (const key in state.distCard) {
+      if (state.distCard.hasOwnProperty(key)) {
+        const index = state.distCard[key].findIndex(item => item.name == title);
+        state.distCard[key].splice(index,1);
+      }
+    }
+  },
 };
 
 const actions = {
@@ -72,6 +147,9 @@ const actions = {
   },
   updateRecCard({ commit }, recCard) {
     commit("setRecCard", recCard);
+  },
+  updateCatCard({ commit }, catCard) {
+    commit("setCatCard", catCard);
   },
   updateModelInit({ commit }, model_init_param) {
     commit("setModelInit", model_init_param);
@@ -88,9 +166,25 @@ const actions = {
   updateAllValues({ commit }) {
     commit("resetValues");
   },
-  updateFormattedDate({commit}, date){
-    commit("setFormattedDate", date)
+  updateFormattedDate({ commit }, date) {
+    commit("setFormattedDate", date);
+  },
+  updateToggleCal({ commit }, title) {
+    commit("setToggleCal", title);
+  },
+  updateToggleLoc({ commit }, title) {
+    commit("setToggleLoc", title);
+  },
+  updateDistCard({ commit }) { // set it same as recCard
+    commit("setDistCard");
+  },
+  updateAddLocation({ commit }, title) {
+    commit("setAddLocation", title);
+  },
+  updateRemoveLocation({ commit }, title) {
+    commit("setRemoveLocation", title);
   }
+
 };
 const getters = {
   getBudget(state) {
@@ -105,21 +199,16 @@ const getters = {
   getModelParam(state) {
     return state.model_parameter;
   },
-  getModelInit(state) {
-    return state.model_init_param;
-  },
   getHotelParam(state) {
     return state.hotel_parameter;
   },
-  getHotelInit(state) {
-    return state.hotel_init_param;
-  },
-  getStartDate(state){
+  getStartDate(state) {
     return state.formattedStartDate;
+  },
+  getDistCard(state) {
+    return state.distCard;
   }
-
 };
-
 
 export default {
   namespaced: true,

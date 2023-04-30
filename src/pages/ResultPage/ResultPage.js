@@ -4,9 +4,9 @@ import draggable from "vuedraggable";
 import PlannerCalendar from "components/PlannerCalendar/PlannerCalendar.vue";
 import { useStore } from "vuex";
 import ParallaxScroll from "components/ParallaxScroll/ParallaxScroll.vue";
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
-import html2canvas from 'html2canvas';
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import html2canvas from "html2canvas";
 
 
 export default defineComponent({
@@ -18,7 +18,6 @@ export default defineComponent({
   },
   updated() {
     const clickedDiv = document.querySelectorAll(".vuecal__event");
-    console.log(clickedDiv);
     if (clickedDiv !== null) {
       for (let i = 0; i < clickedDiv.length; i++) {
         clickedDiv[i].style.backgroundColor = "aquamarine";
@@ -35,23 +34,27 @@ export default defineComponent({
   setup() {
     const cat = ref();
     const rec = ref();
+    const dict = ref();
     const store = useStore();
     const printClass = ref(false);
     let globalBudget = ref("");
     const startDate = ref("");
     const visible = ref(false);
+
     onMounted(() => {
+      store.dispatch("planner/updateDistCard");
       globalBudget.value = store.getters["planner/getBudget"];
       cat.value = store.getters["planner/getCatCard"];
       rec.value = store.getters["planner/getRecCard"];
       startDate.value = store.getters["planner/getStartDate"];
-      console.log(startDate);
+      dict.value = store.getters["planner/getDistCard"];
     });
 
     return {
       cat,
       rec,
       store,
+      dict,
       startDate,
       globalBudget,
       printClass,
@@ -95,18 +98,15 @@ export default defineComponent({
       this.printClass = true;
       this.visible = true;
       setTimeout(async () => {
-        const content = document.querySelector('.print-container');
+        const content = document.querySelector(".print-container");
         const canvas = await html2canvas(content);
-        const imgData = canvas.toDataURL('image/png');
+        const imgData = canvas.toDataURL("image/png");
         const pdf = new jsPDF();
-        pdf.addImage(imgData, 'PNG', 0, 0, 210, 297);
-        pdf.save('document.pdf');
+        pdf.addImage(imgData, "PNG", 0, 0, 210, 297);
+        pdf.save("document.pdf");
         this.printClass = false;
         this.visible = false;
-      }, 2000);
-
-
-      // this.printClass = false;
+      }, 1000);
     },
     removeEventCal(title, budget) {
       const index = this.events.findIndex(item => item.title == title);
@@ -122,9 +122,9 @@ export default defineComponent({
         this.width += budget / 10;
         if (this.width < 26) {
           this.bgColor = "#FF5E0E";
-        } else if (this.width >= 30 && this.width < 80) {
+        } else if (this.width >= 30 && this.width < 70) {
           this.bgColor = "#fdb813";
-        } else if (this.width >= 80) {
+        } else if (this.width >= 70) {
           this.bgColor = "#58b4a9";
         }
       }

@@ -64,6 +64,8 @@
                                     :enable-loc=true
                                     :disable-loc=false
                                     :weather-loc=false
+                                    :cal-toggle="card.calendarToggle"
+                                    :loc-toggle="card.locationToggle"
                                     :lat="card.location[0]"
                                     :long="card.location[1]"
                                     :date-text="card.date"
@@ -99,6 +101,8 @@
                                    :enable-loc=false
                                    :disable-loc=true
                                    :weather-loc=false
+                                   :cal-toggle="card.calendarToggle"
+                                   :loc-toggle="card.locationToggle"
                                    :lat="card.location[0]"
                                    :long="card.location[1]"
                                    :date-text="card.date"
@@ -160,7 +164,7 @@
             style="max-width: 1350px; height: 530px; border-radius: 20px"
             class="top-car"
           >
-            <q-carousel-slide v-for="(cards, index) in rec" :key="index" :name="index-0">
+            <q-carousel-slide v-for="(cards, index) in dict" :key="index" :name="index-0">
               <p style="font-weight: bold; font-size: 2em; text-align: center" >Recommendation based on lowest budget</p>
               <div class="container-row row-1">
                 <ResultCard draggable="true" v-for="card in cards" :key="card.id"
@@ -170,6 +174,8 @@
                             :enable-loc=false
                             :disable-loc=false
                             :weather-loc=true
+                            :cal-toggle="card.calendarToggle"
+                            :loc-toggle="card.locationToggle"
                             :lat="card.location[0]"
                             :long="card.location[1]"
                             :date-text="card.date"

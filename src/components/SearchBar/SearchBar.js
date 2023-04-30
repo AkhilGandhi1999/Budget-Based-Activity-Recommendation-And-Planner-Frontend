@@ -29,13 +29,18 @@ export default defineComponent({
         }, {
           label: "British Columbia", value: "british_columbia"
         }, {
-          label: "Manitoba", value: "alberta"
+          label: "Manitoba", value: "manitoba"
         }, {
-          label: "Nunavut", value: "alberta"
+          label: "Nunavut", value: "nunavut"
         }, {
-          label: "Ontario", value: "alberta"
+          label: "Ontario", value: "ontario"
         }
       ]),
+
+      // Quebec
+      // Brunswick
+      // Labrador
+      // Edward Island
       params: {
         province: "british_columbia", low: 115.0,
         high: 0.0,
@@ -69,7 +74,7 @@ export default defineComponent({
       this.params.end_date = formattedEndDate;
 
       // Store the values in Vuex.
-      this.store.dispatch("planner/updateFormattedDate", formattedEndDate);
+      this.store.dispatch("planner/updateFormattedDate", formattedStartDate);
       this.store.dispatch("planner/updateBudget", this.params.high);
       this.store.dispatch("planner/updateModelInit", this.params);
 
