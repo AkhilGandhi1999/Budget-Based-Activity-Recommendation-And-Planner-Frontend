@@ -1,12 +1,13 @@
 import "../store/constData.js";
 import * as constData from "src/store/constData";
+import { distCard } from "src/store/constData";
 
 const state = {
   budget: 1000,
   recCard: constData.recCard,
   catCard: constData.catCard,
   hotelCard: constData.hotelCard,
-  distCard: constData.recCard,
+  distCard: constData.distCard,
   model_parameter: [],
   model_init_param: {},
   hotel_parameter: [],

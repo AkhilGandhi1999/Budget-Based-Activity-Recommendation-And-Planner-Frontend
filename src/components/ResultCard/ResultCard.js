@@ -25,7 +25,8 @@ export default defineComponent({
     "disableLoc",
     "weatherLoc",
     "calToggle",
-    "locToggle"
+    "locToggle",
+    "cssToggle"
   ],
   setup() {
     const store = useStore();

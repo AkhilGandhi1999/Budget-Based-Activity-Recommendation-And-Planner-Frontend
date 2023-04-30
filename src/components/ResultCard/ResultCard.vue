@@ -1,5 +1,5 @@
 <template>
-  <div class="card-container-grid">
+  <div :class="cssToggle ?'card-container-grid-1': 'card-container-grid'">
 
     <div class="card-container-row row-container-1">
 

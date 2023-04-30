@@ -64,6 +64,7 @@
                                     :enable-loc=true
                                     :disable-loc=false
                                     :weather-loc=false
+                                    :css-toggle=false
                                     :cal-toggle="card.calendarToggle"
                                     :loc-toggle="card.locationToggle"
                                     :lat="card.location[0]"
@@ -91,22 +92,32 @@
                   height="500px"
                   class="bottom-car"
                 >
-                  <q-carousel-slide v-for="(cards, index) in rec" :key="index" :name="index-0">
+                  <q-carousel-slide v-for="(cards, index) in dict" :key="index" :name="index-0">
                     <p style="font-weight: bold; font-size: 2em; text-align: center" >Distance and Time Finder</p>
                     <div class="container-row drop-zone row-3">
-                      <ResultCard  draggable="true" v-for="card in cards" :key="card.id"
-                                   :rating-model=card.rating
-                                   :image-src="'data:image/png;base64,' + card.image"
-                                   :is-day-activity="card.timeofday" :cost-text=card.price
-                                   :enable-loc=false
-                                   :disable-loc=true
-                                   :weather-loc=false
-                                   :cal-toggle="card.calendarToggle"
-                                   :loc-toggle="card.locationToggle"
-                                   :lat="card.location[0]"
-                                   :long="card.location[1]"
-                                   :date-text="card.date"
-                                   :place-text="card.name" :time-text="card.category" @addToEvent="finalAddEvent"></ResultCard>
+                      <div style="display: flex; align-items: center" v-for="(card, ind) in cards" :key="ind">
+                        <ResultCard  draggable="true"
+                                     :rating-model=card.rating
+                                     :image-src="'data:image/png;base64,' + card.image"
+                                     :is-day-activity="card.timeofday" :cost-text=card.price
+                                     :enable-loc=false
+                                     :disable-loc=true
+                                     :weather-loc=false
+                                     :css-toggle=true
+                                     :cal-toggle="card.calendarToggle"
+                                     :loc-toggle="card.locationToggle"
+                                     :lat="card.location[0]"
+                                     :long="card.location[1]"
+                                     :date-text="card.date"
+                                     :place-text="card.name" :time-text="card.category" @addToEvent="finalAddEvent">
+                        </ResultCard>
+                        <div v-if="ind < (cards.length - 1)" style="display: flex; flex-direction: column; align-items: center">
+                            <p>Distance</p>
+                            <q-separator  horizontal style="width:100px; height: 2px;" ></q-separator>
+                            <p style="margin-top: 15px">Time</p>
+                        </div>
+                      </div>
+
                     </div>
                   </q-carousel-slide>
                 </q-carousel>
@@ -164,7 +175,7 @@
             style="max-width: 1350px; height: 530px; border-radius: 20px"
             class="top-car"
           >
-            <q-carousel-slide v-for="(cards, index) in dict" :key="index" :name="index-0">
+            <q-carousel-slide v-for="(cards, index) in rec" :key="index" :name="index-0">
               <p style="font-weight: bold; font-size: 2em; text-align: center" >Recommendation based on lowest budget</p>
               <div class="container-row row-1">
                 <ResultCard draggable="true" v-for="card in cards" :key="card.id"
@@ -178,6 +189,7 @@
                             :loc-toggle="card.locationToggle"
                             :lat="card.location[0]"
                             :long="card.location[1]"
+                            :css-toggle=false
                             :date-text="card.date"
                             :place-text="card.name" :time-text="card.category" @addToEvent="finalAddEvent"></ResultCard>
               </div>
