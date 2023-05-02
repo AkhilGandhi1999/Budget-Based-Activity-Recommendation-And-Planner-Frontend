@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <div class="q-pa-md" style="max-width: 600px">
-          <q-input outlined v-model="name" label="Name"></q-input>
+          <q-input outlined v-model="budget" label="Total Budget $"></q-input>
         </div>
       </div>
       <div class="col">

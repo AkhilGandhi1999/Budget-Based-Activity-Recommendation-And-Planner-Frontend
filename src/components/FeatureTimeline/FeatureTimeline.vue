@@ -23,16 +23,38 @@
           <div class="number-box">
             <span>02</span>
           </div>
+          <h2> {{ heading[4] }}</h2>
+        </div>
+        <div class="body">
+
+          <p style="font-weight: bold">Optimizes your itinerary</p>
+
+          <ul class="list">
+            <li>Create your own personalized day plan by selecting activities from our top recommendations</li>
+            <li>Fully customizable</li>
+            <li>Add recommendations to calendar for planning you day</li>
+            <li>Download the calendar and save as PDF for future reference</li>
+
+          </ul>
+          <img src="../../assets/Card5_Customize_Your_Plan.png" alt="Graphic">
+        </div>
+      </div>
+
+      <div class="demo-card demo-card--step3" style="background-color: ">
+        <div class="head">
+          <div class="number-box">
+            <span>03</span>
+          </div>
           <h2> {{ heading[1] }} </h2>
         </div>
         <div class="body">
 
           <ul class="lists">
-            <li>Personalized hotel recommendations based on budget and travel dates</li>
-            <li>Suggestions tailored to amenities requirements and desired level of comfort</li>
-            <li>Simplified hotel booking process for users</li>
+            <li>Play Area to quickly find Distance and Time between places</li>
+            <li>Add upto four places which places in better planning</li>
+            <li>Each Day has its own instance for getting distance and time</li>
           </ul>
-          <img src="../../assets/Card2_Hotel_Recommendation.jpg" alt="Graphic">
+          <img src="../../assets/maps.png" alt="Graphic">
         </div>
       </div>
 
@@ -40,7 +62,7 @@
       <div class="demo-card demo-card--step3">
         <div class="head">
           <div class="number-box">
-            <span>03</span>
+            <span>04</span>
           </div>
           <h2> {{ heading[2] }}</h2>
         </div>
@@ -53,7 +75,7 @@
       <div class="demo-card demo-card--step4">
         <div class="head">
           <div class="number-box">
-            <span>04</span>
+            <span>05</span>
           </div>
           <h2> {{ heading[3] }}</h2>
         </div>
@@ -64,26 +86,7 @@
         </div>
       </div>
 
-      <div class="demo-card demo-card--step5">
-        <div class="head">
-          <div class="number-box">
-            <span>05</span>
-          </div>
-          <h2> {{ heading[4] }}</h2>
-        </div>
-        <div class="body">
 
-          <p style="font-weight: bold">Optimizes your itinerary</p>
-
-          <ul class="list">
-            <li>Checks when attractions are open</li>
-            <li>Recommends how much time to spend</li>
-            <li>Fully customizable</li>
-            <li>Create your own personalized day plan by selecting activities from our top recommendations</li>
-          </ul>
-          <img src="../../assets/Card5_Customize_Your_Plan.png" alt="Graphic">
-        </div>
-      </div>
 
     </div>
   </section>

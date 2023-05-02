@@ -55,12 +55,12 @@
 
     <div v-if="enableLoc" class="card-container-row row-container-5" >
       <q-btn class="round-button ripple"  @click="fixed = true" rounded  label="Peak At Weather" />
-      <q-btn v-if="locToggle" @click="addToLocation()" class="round-button ripple"  style="background-color: #953553" rounded    label="Get Location" />
+      <q-btn v-if="locToggle" @click="addToLocation()" class="round-button ripple"  style="background-color: #953553" rounded    label="Get Time, Distance" />
       <q-btn v-if="calToggle" class="round-button ripple"  @click="calendar = true" rounded  color="primary" label="Add to Calendar" />
     </div>
 
     <div v-if="disableLoc" class="card-container-row row-container-5" >
-      <q-btn @click="removeFromLocation()" class="round-button ripple"  rounded color="red" label="Remove Location" />
+      <q-btn v-if="removeToggle" @click="removeFromLocation()" class="round-button ripple"  rounded color="red" label="Remove Location" />
     </div>
 
     <div v-if="weatherLoc" class="card-container-row row-container-5" >

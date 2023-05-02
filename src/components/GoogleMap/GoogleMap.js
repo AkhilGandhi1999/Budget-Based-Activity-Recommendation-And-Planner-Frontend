@@ -1,9 +1,18 @@
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import { useStore } from "vuex";
 
-// The google Maps API is called and the points are loaded. Yet to figure out how the points would be loaded, for now i have manually put the points. The api key is put
-// and the distances are calculated
+
 export default defineComponent({
-  name: 'GoogleMap',
+  name: "GoogleMap",
+  props: ["keyIndex"],
+  setup() {
+    const store = useStore();
+    const mapDet= ref();
+    return {
+      store,
+      mapDet
+    };
+  },
   data() {
     return {
       map: null,
@@ -12,33 +21,38 @@ export default defineComponent({
     };
   },
   mounted() {
-    // Load the Google Maps API script
-    const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAbgnClkTt4o5Nj5pNoKv5sY2gHyxwjVPE&libraries=places,directions`;
-    script.defer = true;
-    script.async = true;
-    script.onload = () => {
-      // Initialize the map and markers
-      this.initMap();
-    };
-    document.head.appendChild(script);
+    const demo = this.store.getters["planner/getMapCard"];
+    this.mapDet = demo[this.keyIndex];
+    this.initMap();
   },
   methods: {
     initMap() {
       // Create the map
+      let mapCard = this.store.getters["planner/getMapCard"];
+      console.log(mapCard[this.keyIndex]);
+
       this.map = new google.maps.Map(this.$refs.map, {
-        mapId: "8e0a97af9386fef", // remove this if it isnt looking good.
-        center: { lat: 37.7749, lng: -122.4194 },
-        zoom: 13
+        center: { lat: mapCard[this.keyIndex][0].origin[0], lng: mapCard[this.keyIndex][0].origin[1] },
+        zoom: 7
       });
 
       // Add the markers
-      const points = [
-        { lat: 37.7749, lng: -122.4194 },
-        { lat: 37.7749, lng: -122.4294 },
-        { lat: 37.7849, lng: -122.4294 },
-        { lat: 37.7849, lng: -122.4194 }
-      ];
+      const points = [];
+
+      const demoMapCard = mapCard[this.keyIndex];
+      demoMapCard.forEach((obj) => {
+          let pt = {
+            "lat": obj.origin[0],
+            "lng": obj.origin[1],
+          }
+        let pt1 = {
+          "lat": obj.dest[0],
+          "lng": obj.dest[1],
+        }
+          points.push(pt);
+          points.push(pt1);
+      });
+      console.log(points);
       for (let i = 0; i < points.length; i++) {
         const marker = new google.maps.Marker({
           position: points[i],
@@ -46,27 +60,6 @@ export default defineComponent({
         });
         this.markers.push(marker);
       }
-
-      // Calculate the directions
-      const directionsService = new google.maps.DirectionsService();
-      const waypoints = points.slice(1, -1).map(point => ({
-        location: point,
-        stopover: true
-      }));
-      const request = {
-        origin: points[0],
-        destination: points[points.length - 1],
-        waypoints: waypoints,
-        optimizeWaypoints: true,
-        travelMode: google.maps.TravelMode.DRIVING // if the user wants to use other modes of travel then instead of driving, use any of these walking, bicycling, or transit
-      };
-      directionsService.route(request, (result, status) => {
-        if (status === google.maps.DirectionsStatus.OK) {
-          this.directions = result.routes[0].legs[0];
-        } else {
-          console.error(`Directions request failed: ${status}`);
-        }
-      });
     }
   }
 });

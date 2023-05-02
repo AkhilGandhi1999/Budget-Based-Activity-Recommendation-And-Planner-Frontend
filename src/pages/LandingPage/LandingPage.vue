@@ -41,21 +41,21 @@
                              :attraction_types="attraction_types" :slider-status="true"></TileSelection>
             </transition>
           </q-step>
+<!--          <q-step-->
+<!--            :name="3"-->
+<!--            title="Select five hotel preferences"-->
+<!--            icon="hotel"-->
+<!--            :done="step > 3">-->
+<!--            <transition class="fade">-->
+<!--              <TileSelection class="" style="padding:20px; " v-if="nextParam"-->
+<!--                             :attraction_types="hotel_types" :slider-status="false"></TileSelection>-->
+<!--            </transition>-->
+<!--          </q-step>-->
           <q-step
             :name="3"
-            title="Select five hotel preferences"
-            icon="hotel"
-            :done="step > 3">
-            <transition class="fade">
-              <TileSelection class="" style="padding:20px; " v-if="nextParam"
-                             :attraction_types="hotel_types" :slider-status="false"></TileSelection>
-            </transition>
-          </q-step>
-          <q-step
-            :name="4"
             title="Done"
             icon="verified"
-            :done="step > 4">
+            :done="step > 3">
             <transition-group class="fade" >
               <div style="padding: 100px">
                 <p style="text-align: center; font-size: 2em;">You are all set. Click the button to get your recommendations</p>
@@ -67,8 +67,8 @@
           <template v-slot:navigation>
             <q-stepper-navigation>
               <q-btn style="margin-left: 30px; margin-bottom: 5px; font-size: 1.12em;" @click="$refs.stepper.next();"
-                     color="primary" v-if="step!==4" :label="step === 3 ? 'Finish' : 'Continue'" />
-              <q-btn style="font-size: 1.12em;" v-if="step > 1 && step !== 4" flat color="primary" @click="$refs.stepper.previous()"
+                     color="primary" v-if="step!==3" :label="step === 2 ? 'Finish' : 'Continue'" />
+              <q-btn style="font-size: 1.12em;" v-if="step > 1 && step !== 3" flat color="primary" @click="$refs.stepper.previous()"
                      label="Back"
                      class="q-ml-sm" />
             </q-stepper-navigation>

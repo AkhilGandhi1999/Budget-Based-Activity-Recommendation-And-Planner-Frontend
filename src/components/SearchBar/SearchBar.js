@@ -18,7 +18,7 @@ export default defineComponent({
     return {
       store,
       range,
-      name: ref(""),
+      budget: ref(),
       date: ref(""),
       date2: ref(""),
       model: ref(""),
@@ -75,7 +75,7 @@ export default defineComponent({
 
       // Store the values in Vuex.
       this.store.dispatch("planner/updateFormattedDate", formattedStartDate);
-      this.store.dispatch("planner/updateBudget", this.params.high);
+      this.store.dispatch("planner/updateBudget", Number(this.budget));
       this.store.dispatch("planner/updateModelInit", this.params);
 
       let hotels_init = {};

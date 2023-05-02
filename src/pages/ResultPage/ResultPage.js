@@ -7,11 +7,12 @@ import ParallaxScroll from "components/ParallaxScroll/ParallaxScroll.vue";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import html2canvas from "html2canvas";
+import GoogleMap from "components/GoogleMap/GoogleMap.vue";
 
 
 export default defineComponent({
   name: "ResultPage",
-  components: { ResultCard, draggable, PlannerCalendar, ParallaxScroll },
+  components: { ResultCard, draggable, PlannerCalendar, ParallaxScroll, GoogleMap },
   mounted() {
     const clickedDiv = document.querySelector(".vuecal__menu");
     clickedDiv.style.backgroundColor = "#58b4a9";
@@ -35,6 +36,7 @@ export default defineComponent({
     const cat = ref();
     const rec = ref();
     const dict = ref();
+    const map = ref();
     const store = useStore();
     const printClass = ref(false);
     let globalBudget = ref("");
@@ -42,12 +44,13 @@ export default defineComponent({
     const visible = ref(false);
 
     onMounted(() => {
-      store.dispatch("planner/updateDistCard");
+      store.dispatch("planner/updateMapDistCard");
       globalBudget.value = store.getters["planner/getBudget"];
       cat.value = store.getters["planner/getCatCard"];
       rec.value = store.getters["planner/getRecCard"];
       startDate.value = store.getters["planner/getStartDate"];
       dict.value = store.getters["planner/getDistCard"];
+      map.value = store.getters["planner/getMapCard"];
     });
 
     return {
@@ -55,6 +58,7 @@ export default defineComponent({
       rec,
       store,
       dict,
+      map,
       startDate,
       globalBudget,
       printClass,
@@ -63,10 +67,17 @@ export default defineComponent({
       lowest: ref(false),
       home: ref(false),
       save: ref(false),
-      visible
+      maps: ref(false),
+      maximizedToggle: ref(true),
+      visible,
+      keyIndex: ref(0)
     };
   },
   methods: {
+    toggleMaps(index){
+      this.keyIndex = index
+      this.maps = true;
+    },
     finalAddEvent(event, budget) {
       console.log(event);
       this.events.push(event);
@@ -103,7 +114,7 @@ export default defineComponent({
         const imgData = canvas.toDataURL("image/png");
         const pdf = new jsPDF();
         pdf.addImage(imgData, "PNG", 0, 0, 210, 297);
-        pdf.save("document.pdf");
+        pdf.save("itinerary.pdf");
         this.printClass = false;
         this.visible = false;
       }, 1000);

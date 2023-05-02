@@ -1,20 +1,25 @@
 import "../store/constData.js";
-import * as constData from "src/store/constData";
-import { distCard } from "src/store/constData";
 
 const state = {
-  budget: 1000,
-  recCard: constData.recCard,
-  catCard: constData.catCard,
-  hotelCard: constData.hotelCard,
-  distCard: constData.distCard,
+  budget: 0,
+  recCard: {},
+  catCard: {},
+  hotelCard: [],
+  distCard: {},
+  mapCard: {},
   model_parameter: [],
   model_init_param: {},
   hotel_parameter: [],
   hotel_init_param: {},
-  formattedStartDate: "",
+  formattedStartDate: ""
 };
 const mutations = {
+  setAddMapCard(state, data) {
+    state.mapCard[data.key].push(data);
+  },
+  setRemoveMapCard(state, key) {
+      state.mapCard[key].pop();
+  },
   setRemoveFromBudget(state, budget) {
     state.budget -= budget.toFixed(2);
     state.budget.toFixed(2);
@@ -50,6 +55,8 @@ const mutations = {
     state.recCard = {};
     state.catCard = {};
     state.hotelCard = [];
+    state.mapCard = {};
+    state.distCard = {};
     state.model_parameter = [];
     state.model_init_param = {};
     state.hotel_parameter = [];
@@ -97,12 +104,26 @@ const mutations = {
       }
     }
   },
-  setDistCard(state) {  // need to update when values coming from First page. Update it same as rec Card.
+  setMapCard(state, maps){
+    state.mapCard = maps
+  },
+  setDistCard(state, dist){
+    state.distCard = dist;
+  },
+  setMapDistCard(state) {
     for (const key in state.distCard) {
       // Check if the key is a valid property of the object
       if (state.distCard.hasOwnProperty(key)) {
         // Set the array value for the current key to an empty array
         state.distCard[key] = [];
+      }
+    }
+
+    for (const key in state.mapCard) {
+      // Check if the key is a valid property of the object
+      if (state.mapCard.hasOwnProperty(key)) {
+        // Set the array value for the current key to an empty array
+        state.mapCard[key] = [];
       }
     }
   },
@@ -114,11 +135,10 @@ const mutations = {
           // Check if the object's title matches the titleToMatch variable
           if (obj.name === title) {
             // Update the toggle value to the new value
-            if(state.distCard[key].length < 4){
+            if (state.distCard[key].length < 4) {
               state.distCard[key].push(obj);
               obj.locationToggle = !obj.locationToggle;
-            }
-            else {
+            } else {
               alert("You cannot add more items!!");
             }
           }
@@ -130,13 +150,25 @@ const mutations = {
     for (const key in state.distCard) {
       if (state.distCard.hasOwnProperty(key)) {
         const index = state.distCard[key].findIndex(item => item.name == title);
-        state.distCard[key].splice(index,1);
+        state.distCard[key].splice(index, 1);
       }
     }
-  },
+  }
 };
 
 const actions = {
+  updateDistCard({ commit }, dist){
+    commit("setDistCard", dist);
+  },
+  updateMapCard({ commit }, map){
+    commit("setMapCard", map)
+  },
+  updateAddMapCard({ commit }, demo) {
+    commit("setAddMapCard", demo);
+  },
+  updateRemoveMapCard({ commit }, key) {
+    commit("setRemoveMapCard", key);
+  },
   updateBudget({ commit }, budget) {
     commit("setBudget", budget);
   },
@@ -176,8 +208,8 @@ const actions = {
   updateToggleLoc({ commit }, title) {
     commit("setToggleLoc", title);
   },
-  updateDistCard({ commit }) { // set it same as recCard
-    commit("setDistCard");
+  updateMapDistCard({ commit }) {
+    commit("setMapDistCard");
   },
   updateAddLocation({ commit }, title) {
     commit("setAddLocation", title);
@@ -208,6 +240,9 @@ const getters = {
   },
   getDistCard(state) {
     return state.distCard;
+  },
+  getMapCard(state){
+    return state.mapCard;
   }
 };
 
