@@ -117,7 +117,7 @@ export default defineComponent({
         pdf.save("itinerary.pdf");
         this.printClass = false;
         this.visible = false;
-      }, 1000);
+      }, 200);
     },
     removeEventCal(title, budget) {
       const index = this.events.findIndex(item => item.title == title);

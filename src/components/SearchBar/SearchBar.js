@@ -26,14 +26,21 @@ export default defineComponent({
       options: ref([
         {
           label: "Alberta", value: "alberta"
-        }, {
+        },
+        {
           label: "British Columbia", value: "british_columbia"
-        }, {
-          label: "Manitoba", value: "manitoba"
-        }, {
-          label: "Nunavut", value: "nunavut"
-        }, {
+        },
+        {
+          label: "Northwest Territories", value: "northwest_territories"
+        },
+        {
+          label: "Nova Scotia", value: "nova_scotia"
+        },
+        {
           label: "Ontario", value: "ontario"
+        },
+        {
+          label: "Quebec", value: "quebec"
         }
       ]),
 

@@ -20,8 +20,19 @@
       </div>
 
       <div class="card-item row-1-item-2">
-        <img v-if="isDayActivity === 'Morning'" src="../../assets/sun.gif" class="img-dim">
-        <img v-else src="../../assets/night.gif" class="img-dim">
+        <div v-if="isDayActivity === 'Morning'">
+          <img src="../../assets/c1-sunrise.gif" class="img-dim">
+          <q-tooltip anchor="top middle" self="bottom middle" class="bg-blue text-body2">
+             Activities preferred from 8:00 AM to 2:00 PM
+          </q-tooltip>
+        </div>
+        <div v-else>
+          <img src="../../assets/c3-even.gif" class="img-dim">
+          <q-tooltip anchor="top middle" self="bottom middle" class="bg-blue text-body2">
+            Activities preferred from 2:00 PM to 11:00 PM
+          </q-tooltip>
+        </div>
+
       </div>
 
     </div>
@@ -53,18 +64,21 @@
     </div>
 
 
-    <div v-if="enableLoc" class="card-container-row row-container-5" >
-      <q-btn class="round-button ripple"  @click="fixed = true" rounded  label="Peak At Weather" />
-      <q-btn v-if="locToggle" @click="addToLocation()" class="round-button ripple"  style="background-color: #953553" rounded    label="Get Time, Distance" />
-      <q-btn v-if="calToggle" class="round-button ripple"  @click="calendar = true" rounded  color="primary" label="Add to Calendar" />
+    <div v-if="enableLoc" class="card-container-row row-container-5">
+      <q-btn class="round-button ripple" @click="fixed = true" rounded label="Peak At Weather" />
+      <q-btn v-if="locToggle" @click="addToLocation()" class="round-button ripple" style="background-color: #953553"
+             rounded label="Get Time, Distance" />
+      <q-btn v-if="calToggle" class="round-button ripple" @click="calendar = true" rounded color="primary"
+             label="Add to Calendar" />
     </div>
 
-    <div v-if="disableLoc" class="card-container-row row-container-5" >
-      <q-btn v-if="removeToggle" @click="removeFromLocation()" class="round-button ripple"  rounded color="red" label="Remove Location" />
+    <div v-if="disableLoc" class="card-container-row row-container-5">
+      <q-btn v-if="removeToggle" @click="removeFromLocation()" class="round-button ripple" rounded color="red"
+             label="Remove Location" />
     </div>
 
-    <div v-if="weatherLoc" class="card-container-row row-container-5" >
-      <q-btn class="round-button ripple"  @click="fixed = true" rounded  label="Peak At Weather" />
+    <div v-if="weatherLoc" class="card-container-row row-container-5">
+      <q-btn class="round-button ripple" @click="fixed = true" rounded label="Peak At Weather" />
     </div>
   </div>
 
@@ -79,7 +93,7 @@
   <q-dialog v-model="calendar" transition-show="fade" transition-hide="rotate">
     <div class="cal-container">
       <p>DATE : {{ dateText }}</p>
-      <q-input  outlined rounded v-model="start_time" mask="time" label="Start Time" :rules="['time']">
+      <q-input outlined rounded v-model="start_time" mask="time" label="Start Time" :rules="['time']">
         <template v-slot:append>
           <q-icon name="access_time" class="cursor-pointer">
             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
@@ -93,7 +107,7 @@
         </template>
       </q-input>
 
-      <q-input  outlined rounded v-model="end_time" mask="time" label="End Time" :rules="['time']">
+      <q-input outlined rounded v-model="end_time" mask="time" label="End Time" :rules="['time']">
         <template v-slot:append>
           <q-icon name="access_time" class="cursor-pointer">
             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
