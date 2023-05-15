@@ -17,8 +17,8 @@ export default defineComponent({
 
     //  API call setup
 
-    const url = ["http://54.219.163.251:5000/categories/get_categories",
-      "http://54.219.163.251:5000/hotels/get_hotel_recommandations"];
+    const url = ["http://13.57.177.210:5000/categories/get_categories",
+      "http://13.57.177.210:5000/hotels/get_hotel_recommandations"];
     let pageOne = ref(true);
     let pageTwo = ref(false);
 
